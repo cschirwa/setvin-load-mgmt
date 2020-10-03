@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description-gambolthemes" content="">
+	<meta name="author-gambolthemes" content="">
+	<title>Big Boon Shopping</title>
+	<link href="../css/styles.css" rel="stylesheet">
+	<link href="../css/admin-style.css" rel="stylesheet">
+
+	<!-- Vendor Stylesheets -->
+	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body class="sb-nav-fixed">
+	<nav class="sb-topnav navbar navbar-expand navbar-light bg-clr">
+		<a class="navbar-brand logo-brand" th:href="@{/admin/index}">Big Boon Shopping</a>
+		<button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+		<a th:href="@{/admin/index}" class="frnt-link"><i class="fas fa-external-link-alt"></i>Home</a>
+		<ul class="navbar-nav ml-auto mr-md-0">
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+					<a class="dropdown-item admin-dropdown-item" th:href="@{/admin/profile_add}">Edit Profile</a>
+					<a class="dropdown-item admin-dropdown-item" th:href="@{/admin/change_password}">Change Password</a>
+					<a class="dropdown-item admin-dropdown-item" th:href="@{/admin/login}">Logout</a>
+				</div>
+			</li>
+		</ul>
+	</nav>
+	<div id="layoutSidenav">
+		<div id="layoutSidenav_nav">
+			<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+				<div class="sb-sidenav-menu">
+					<div class="nav">
+						<a class="nav-link" th:href="@{/admin/index}">
+							<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+							Dashboard
+						</a>
+						<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link sub_nav_link" th:href="@{/admin/post_categories}">Categories</a>
+								<a class="nav-link sub_nav_link" th:href="@{/admin/post_tags}">Tags</a>
+							</nav>
+						</div>
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories" aria-expanded="false" aria-controls="collapseCategories">
+							<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+							Categories
+							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+						</a>
+						<div class="collapse" id="collapseCategories" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link sub_nav_link" th:href="@{/admin/category}">All Categories</a>
+								<a class="nav-link sub_nav_link" th:href="@{/admin/category_add}">Add Category</a>
+							</nav>
+						</div>
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts">
+							<div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
+							Products
+							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+						</a>
+						<div class="collapse" id="collapseProducts" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link sub_nav_link" th:href="@{/admin/products}">All Products</a>
+								<a class="nav-link sub_nav_link" th:href="@{/admin/product_add}">Add Product</a>
+							</nav>
+						</div>
+						<a class="nav-link active" th:href="@{/admin/orders}">
+							<div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
+							Orders
+						</a>
+						<a class="nav-link" th:href="@{/admin/customers}">
+							<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+							Customers
+						</a>
+						<a class="nav-link" th:href="@{/admin/offers}">
+							<div class="sb-nav-link-icon"><i class="fas fa-gift"></i></div>
+							Offers
+						</a>
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">
+							<div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
+							Setting
+							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+						</a>
+						<div class="collapse" id="collapseSettings" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link sub_nav_link" th:href="@{/admin/general_setting}">General Settings</a>
+								<a class="nav-link sub_nav_link" th:href="@{/admin/payment_setting}">Payment Settings</a>
+								<a class="nav-link sub_nav_link" th:href="@{/admin/email_setting}">Email Settings</a>
+							</nav>
+						</div>
+						<a class="nav-link" th:href="@{/admin/reports}">
+							<div class="sb-nav-link-icon"><i class="fas fa-chart-bar"></i></div>
+							Reports
+						</a>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<div id="layoutSidenav_content">
+			<main>
+				<div class="container-fluid">
+					<h2 class="mt-30 page-title">Orders</h2>
+					<ol class="breadcrumb mb-30">
+						<li class="breadcrumb-item"><a th:href="@{/admin/index}">Dashboard</a></li>
+						<li class="breadcrumb-item"><a th:href="@{/admin/orders}">Orders</a></li>
+						<li class="breadcrumb-item active">Order Edit</li>
+					</ol>
+					<div class="row">
+						<div class="col-xl-12 col-md-12">
+							<div class="card card-static-2 mb-30">
+								<div class="card-title-2">
+									<h2 class="title1458">Invoice</h2>
+									<span class="order-id" th:text="${order.id}">Order #ORDR-123456</span>
+								</div>
+								<div class="invoice-content">
+									<form th:action="@{/admin/order_edit}" th:object="${order}" method="post" enctype="multipart/form-data">
+									<div class="row">
+										<div class="col-lg-6 col-sm-6">
+											<div class="ordr-date" th:text="${#dates.format(order.orderDate,'dd/MM/yyyy')}">
+												<b>Order Date :</b> 29 May 2020
+											</div>
+										</div>
+										<div class="col-lg-6 col-sm-6">
+											<div class="ordr-date right-text" th:text="${order.address}">
+												<b>Order Date :</b><br>
+												#0000, St No. 8,<br>
+												Shahid Karnail Singh Nagar,<br>
+												MBD Mall,<br>
+												Frozpur road,<br>
+												Ludhiana,<br>
+												141001<br>
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="card card-static-2 mb-30 mt-30">
+												<div class="card-title-2">
+													<h4>Order Items</h4>
+												</div>
+												<div class="card-body-table">
+													<div class="table-responsive">
+														<table class="table ucp-table table-hover">
+															<thead>
+																<tr>
+																	<th style="width:130px">#</th>
+																	<th>Item</th>
+																	<th style="width:150px" class="text-center">Price</th>
+																	<th style="width:150px" class="text-center">Qty</th>
+																	<th style="width:100px" class="text-center">Total</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr th:each="lineItem: ${order.lineItems}">
+																	<td>1</td>
+																	<td>
+																		<a href="#" target="_blank" th:text="${lineItem.product.name}">Product Title Here</a>
+																	</td>
+																	<td class="text-center" th:text="${lineItem.product.price}">$15</td>
+																	<td class="text-center" th:text="${lineItem.quantity}">1</td>
+																	<td class="text-center" th:text="${lineItem.lineTotal}">$15</td>
+																</tr>
+																<!-- <tr>
+																	<td>2</td>
+																	<td>
+																		<a href="#" target="_blank">Product Title Here</a>
+																	</td>
+																	<td class="text-center">$12</td>
+																	<td class="text-center">1</td>
+																	<td class="text-center">$12</td>
+																</tr> -->
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-7"></div>
+										<div class="col-lg-5">
+											<div class="order-total-dt">
+												<div class="order-total-left-text">
+													Sub Total
+												</div>
+												<div class="order-total-right-text" th:text="${#numbers.formatDecimal(subTotal, 0, 'COMMA', 2, 'POINT')}">
+													$27
+												</div>
+											</div>
+											<div class="order-total-dt">
+												<div class="order-total-left-text">
+													Delivery Fees
+												</div>
+												<div class="order-total-right-text" th:text="${#numbers.formatDecimal(delivery, 0, 'COMMA', 2, 'POINT')}">
+													$0
+												</div>
+											</div>
+											<div class="order-total-dt">
+												<div class="order-total-left-text fsz-18">
+													Vat Amount
+												</div>
+												<div class="order-total-right-text fsz-18" th:text="${#numbers.formatDecimal(vat, 0, 'COMMA', 2, 'POINT')}">
+													$27
+												</div>
+											</div>
+											<div class="order-total-dt">
+												<div class="order-total-left-text fsz-18">
+													Total Amount
+												</div>
+												<div class="order-total-right-text fsz-18"  th:text="${#numbers.formatDecimal(total, 0, 'COMMA', 2, 'POINT')}">
+													$27
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-7"></div>
+										<div class="col-lg-5">
+											<div class="select-status">
+												<label for="status">Status*</label>
+												<div class="input-group">
+													<select id="status" name="status" class="form-control" th:field="*{status}" required>
+														<option value="Active">Pending</option>
+														<option value="Inactive">Delayed</option>
+														<option value="Active">Cancelled</option>
+														<option value="Inactive">Completed</option>
+													</select>
+													<div class="input-group-append">
+														<button class="status-btn hover-btn" type="submit">Submit</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+			<footer class="py-4 bg-footer mt-auto">
+				<div class="container-fluid">
+					<div class="d-flex align-items-center justify-content-between small">
+						<div class="text-muted-1">© 2020 <b>Big Boon Shopping</b>.</div>
+						<div class="footer-links">
+							<a href="#">Privacy Policy</a>
+							<a href="#">Terms &amp; Conditions</a>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../js/scripts.js"></script>
+
+</body>
+</html>
