@@ -1,5 +1,10 @@
 package za.co.setvin.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +17,12 @@ public class TruckService {
 
 	@Autowired
 	private TruckRepository truckRepository;
+	
+	public List<Truck> getAll(){
+		List<Truck> trucks = new ArrayList<>();
+		truckRepository.findAll().forEach(truck -> trucks.add(truck));
+		return trucks;
+	}
 	
 	public Truck findById(Long id) {
 		return truckRepository.findById(id).isPresent() ? truckRepository.findById(id).get() : null;
@@ -32,5 +43,11 @@ public class TruckService {
 			return truckRepository.findByRegistration(registration).isPresent() ? 
 					truckRepository.findByRegistration(registration).get() : null;
 		return null;
+	}
+	
+	@Transactional
+	public Truck amend(Long id, Truck truck) {
+		truck.setId(id);
+		return truckRepository.save(truck);
 	}
 }

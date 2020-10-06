@@ -139,68 +139,73 @@
 					<h2 class="mt-30 page-title">Truck View</h2>
 					<ol class="breadcrumb mb-30">
 						<li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
-						<li class="breadcrumb-item"><a th:href="@{/products}">Trucks</a></li>
+						<li class="breadcrumb-item"><a th:href="@{/trucks}">Trucks</a></li>
 						<li class="breadcrumb-item active">Truck view</li>
 					</ol>
 					<div class="row">
 						<div class="col-lg-5 col-md-6">
 							<div class="card card-static-2 mb-30">
 								<div class="card-body-table">
-									<div class="shopowner-content-left text-center pd-20">
-										<div class="shop_img" th:each="file : ${files}">
-											<img th:src="@{../../images/product/{fileId}(fileId=${file.fileName})}" alt="">
+									<div class="shopowner-content-left text-center pd-20" th:object="${truck}">
+										<div class="shopowner-dts">
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Registration</span>
+												<span class="right-dt" th:text="${truck.registration}">Registration</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Make</span>
+												<span class="right-dt" th:text="${truck.make}">make</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Model</span>
+												<span class="right-dt" th:text="${truck.model}">Model</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Vin Number</span>
+												<span class="right-dt" th:text="${truck.vin}">Vin Number</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Engine Number</span>
+												<span class="right-dt" th:text="${truck.engineNumber}">engineNumber</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Created</span>
+												<span class="right-dt" th:text="${truck.created}">Created</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Driver</span>
+												<span class="right-dt" th:text="${truck.driver}">Driver</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">License Disc Expiry</span>
+												<span class="right-dt" th:text="${truck.licenseDiscExpiry}">License Disc Expiry</span>
+											</div>
 										</div>
-										<ul class="product-dt-purchases">
-											<li>
-												<div class="product-status">
-													Orders <span class="badge-item-2 badge-status">10</span>
-												</div>
-											</li>
-											<!-- <li>
-											<div class="product-status">
-											Shop <span class="badge-item-2 badge-status">2</span>
-										</div>
-									</li> -->
-								</ul>
-								<div class="shopowner-dts">
-									<div class="shopowner-dt-list">
-										<span class="left-dt">Price</span>
-										<span class="right-dt" th:text="'$ '+ *{product.price}">$15</span>
-									</div>
-									<div class="shopowner-dt-list">
-										<span class="left-dt">Status</span>
-										<span class="right-dt" th:text="*{product.status}">Active</span>
-									</div>
-									<div class="shopowner-dt-list">
-										<span class="left-dt">Created</span>
-										<span class="right-dt" th:text="*{product.created}">5 May 2020, 03.45 PM</span>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</main>
-	<footer class="py-4 bg-footer mt-auto">
-		<div class="container-fluid">
-			<div class="d-flex align-items-center justify-content-between small">
-				<div class="text-muted-1">© 2020 <b>Load Management System</b>. </div>
-				<div class="footer-links">
-					<a href="#">Privacy Policy</a>
-					<a href="#">Terms &amp; Conditions</a>
+			</main>
+			<footer class="py-4 bg-footer mt-auto">
+				<div class="container-fluid">
+					<div class="d-flex align-items-center justify-content-between small">
+						<div class="text-muted-1">© 2020 <b>Load Management System</b>. </div>
+						<div class="footer-links">
+							<a href="#">Privacy Policy</a>
+							<a href="#">Terms &amp; Conditions</a>
+						</div>
+					</div>
 				</div>
-			</div>
+			</footer>
 		</div>
-	</footer>
-</div>
-</div>
+	</div>
 
-<!-- Javascripts -->
-<script src="../js/jquery-3.4.1.min.js"></script>
-<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../js/scripts.js"></script>
+	<!-- Javascripts -->
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../js/scripts.js"></script>
 
 </body>
 </html>

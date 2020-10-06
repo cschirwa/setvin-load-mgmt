@@ -78,8 +78,8 @@ public class CustomerController {
 			RedirectAttributes attributes) {
 		customerService.add(customer);
 		if(!result.hasErrors()) {
-			attributes.addFlashAttribute("message", "Failed");
-			attributes.addFlashAttribute("alertClass", "alert-danger");
+			attributes.addFlashAttribute("message", "Success");
+			attributes.addFlashAttribute("alertClass", "alert-success");
 			return "redirect:customers";
 		}
 		attributes.addFlashAttribute("message", "Failed");

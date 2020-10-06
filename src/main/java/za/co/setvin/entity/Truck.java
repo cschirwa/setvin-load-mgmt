@@ -24,9 +24,9 @@ public class Truck extends AbstractEntity implements Serializable{
 	private String make;
 	private String model;
 	private String vin;
+	private String engineNumber;
 	
-	@OneToOne
-	private Driver driver;
+	private String driver;
 	private LocalDate licenseDiscExpiry;
 	
 	public Truck(String registration, String make, String model, String vin) {

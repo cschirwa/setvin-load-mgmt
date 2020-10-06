@@ -139,7 +139,7 @@
 					<h2 class="mt-30 page-title">Trucks</h2>
 					<ol class="breadcrumb mb-30">
 						<li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
-						<li class="breadcrumb-item"><a th:href="@{/products}">Trucks</a></li>
+						<li class="breadcrumb-item"><a th:href="@{/trucks}">Trucks</a></li>
 						<li class="breadcrumb-item active">Add Truck</li>
 					</ol>
 					<div class="row">
@@ -152,158 +152,81 @@
 									<div class="card-body-table">
 										<div class="news-content-right pd-20">
 											<div class="form-group">
-												<label class="form-label">Name*</label>
-												<input type="text" class="form-control" placeholder="Truck Name" th:field="*{name}" minlength="5" maxlength="99" required>
+												<label class="form-label">Registration*</label>
+												<input type="text" class="form-control" placeholder="Truck Registration" th:field="*{registration}" minlength="5" maxlength="20" required>
 											</div>
-											<div class="form-group">
-												<label class="form-label">Customer*</label>
-												<select id="customer" name="customer" class="form-control" th:field="*{customer}" required>
-													<option value="" disabled>--Select Customer--</option>
-													<option th:each="customer : ${customerList}" th:value="${customer.id}" th:text="${customer.name}"></option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label class="form-label">Brand</label>
-												<select id="brand" name="brand" class="form-control" th:field="*{brand}">
-													<option value="" disabled>--Select Brand--</option>
-													<option th:each="brand : ${brands}" th:value="${brand.id}" th:text="${brand.name}"></option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label class="form-label">Price*</label>
-												<input type="text" class="form-control" placeholder="R0" th:field="*{price}" required>
-											</div>
-											<div class="form-group">
-												<label class="form-label">Discount*</label>
-												<input type="text" class="form-control" placeholder="0%" th:field="*{discount}">
-											</div>
-											<div class="form-group">
-												<label class="form-label">Status*</label>
-												<select id="status" name="status" class="form-control" th:field="*{status}" required>
-													<option value="Active">Active</option>
-													<option value="Inactive">Inactive</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label class="form-label">Description*</label>
-												<!-- <div class="card card-editor"> -->
-												<textarea placeholder="description" class="form-control" th:field="*{description}" required></textarea>
-												<!-- <div class="content-editor">
-												<div id='edit'></div>
-											</div> -->
-										</div>
-										<!-- </div> -->
-										<div class="form-group">
-											<label class="form-label">Customer Image*</label>
-											<div class="input-group">
-												<div class="custom-file">
-													<input type="file" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" th:field="*{images}" th:multiple="multiple">
-													<label for="inputGroupFile04">Choose Image</label>
+											<div class="row">
+												<div class="form-group col-md-6">
+													<label class="form-label">Make*</label>
+													<select type="text" id="make" name="make" class="form-control" th:field="*{make}" required>
+														<option value="" disabled>--Select Make--</option>
+														<option th:value="Volvo" th:text="Volvo">Volvo</option>
+														<option th:value="MAN" th:text="MAN">MAN</option>
+														<option th:value="Scania" th:text="Scania">Scania</option>
+														<option th:value="Mercedez" th:text="Mercedez">Mercedez</option>
+														<option th:value="Freightliner" th:text="Freightliner">Freightliner</option>
+													</select>
+												</div>
+												<div class="form-group col-md-6">
+													<label class="form-label">Model</label>
+													<select type="text" id="model" name="model" class="form-control" th:field="*{model}" required>
+														<option value="" disabled>--Select Make--</option>
+														<option th:value="FH440" th:text="FH440">FH440</option>
+														<option th:value="FH460" th:text="FH460">FH460</option>
+														<option th:value="ST450" th:text="ST450">ST450</option>
+														<option th:value="Actros" th:text="Actros">Actros</option>
+														<option th:value="440HP" th:text="440HP">440HP</option>
+													</select>
 												</div>
 											</div>
-											<div class="add-cate-img-1">
-												<img th:src="@{images/product/prod-{id}-1.jpg (id=${product.id})}" alt="">
+											<div class="row">
+												<div class="form-group col-md-6">
+													<label class="form-label">Vin Number*</label>
+													<input type="text" class="form-control" placeholder="Enter Vin Number" th:field="*{vin}" required>
+												</div>
+												<div class="form-group col-md-6">
+													<label class="form-label">Engine Number*</label>
+													<input type="text" class="form-control" placeholder="Enter Engine Number" th:field="*{engineNumber}" required>
+												</div>
 											</div>
+											<div class="row">
+												<div class="form-group col-md-6">
+													<label class="form-label">Licence Disc Expiry</label>
+													<input type="date" class="form-control" placeholder="2020/01/01" th:field="*{licenseDiscExpiry}" >
+												</div>
+												<div class="form-group col-md-6">
+													<label class="form-label">Driver</label>
+													<select type="text" id="driver" class="form-control"  th:field="*{driver}">
+														<option th:each="driver: ${driverList}" th:value="${driver.id}" th:text="${driver.firstname + ' ' + driver.lastname}">Jonny Depp</option>
+													</select>
+												</div>
+											</div>
+											<button class="save-btn hover-btn" type="submit">Add New Truck</button>
 										</div>
-										<!-- div class="form-group">
-										<label class="form-label">More Image*</label>
-										<div class="input-group">
-										<div class="custom-file">
-										<input type="file" class="custom-file-input" id="inputGroupFile05" aria-describedby="inputGroupFileAddon05" th:field="*{image2}">
-										<label class="custom-file-label" for="inputGroupFile05">Choose Image</label>
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
-							<label class="form-label">More Image*</label>
-							<div class="input-group">
-							<div class="custom-file">
-							<input type="file" class="custom-file-input" id="inputGroupFile05" aria-describedby="inputGroupFileAddon05" th:field="*{image3}">
-							<label class="custom-file-label" for="inputGroupFile05">Choose Image</label>
 						</div>
 					</div>
-				</div>
-				<div class="form-group">
-				<label class="form-label">More Image*</label>
-				<div class="input-group">
-				<div class="custom-file">
-				<input type="file" class="custom-file-input" id="inputGroupFile05" aria-describedby="inputGroupFileAddon05" th:field="*{image4}">
-				<label class="custom-file-label" for="inputGroupFile05">Choose Image</label>
+				</main>
+				<footer class="py-4 bg-footer mt-auto">
+					<div class="container-fluid">
+						<div class="d-flex align-items-center justify-content-between small">
+							<div class="text-muted-1">© 2020 <b>Load Management System</b>.</div>
+							<div class="footer-links">
+								<a href="#">Privacy Policy</a>
+								<a href="#">Terms &amp; Conditions</a>
+							</div>
+						</div>
+					</div>
+				</footer>
 			</div>
 		</div>
-	</div>
-	<div class="form-group">
-	<label class="form-label">More Image*</label>
-	<div class="input-group">
-	<div class="custom-file">
-	<input type="file" class="custom-file-input" id="inputGroupFile05" aria-describedby="inputGroupFileAddon05" th:field="*{image5}">
-	<label class="custom-file-label" for="inputGroupFile05">Choose Image</label>
-</div>
-</div>
-</div> -->
-<button class="save-btn hover-btn" type="submit">Add New Truck</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-<footer class="py-4 bg-footer mt-auto">
-	<div class="container-fluid">
-		<div class="d-flex align-items-center justify-content-between small">
-			<div class="text-muted-1">© 2020 <b>Load Management System</b>.</div>
-			<div class="footer-links">
-				<a href="#">Privacy Policy</a>
-				<a href="#">Terms &amp; Conditions</a>
-			</div>
-		</div>
-	</div>
-</footer>
-</div>
-</div>
 
-<!-- Javascripts -->
-<script src="js/jquery-3.4.1.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="js/scripts.js"></script>
+		<!-- Javascripts -->
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="js/scripts.js"></script>
 
-<!-- froala Editor Javascripts -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
-<!-- <script type="text/javascript" src="vendor/froala_editor_3.1.1/js/froala_editor.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/align.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/code_beautifier.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/code_view.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/colors.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/emoticons.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/draggable.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/font_size.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/font_family.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/image.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/file.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/image_manager.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/line_breaker.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/link.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/lists.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/paragraph_format.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/paragraph_style.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/video.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/table.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/url.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/entities.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/char_counter.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/inline_style.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/save.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/fullscreen.min.js"></script>
-<script type="text/javascript" src="vendor/froala_editor_3.1.1/js/plugins/quote.min.js"></script> -->
-<!-- <script>
-(function () {
-new FroalaEditor("#edit", {
-zIndex: 10
-})
-})()
-</script> -->
-
-</body>
-</html>
+	</body>
+	</html>
