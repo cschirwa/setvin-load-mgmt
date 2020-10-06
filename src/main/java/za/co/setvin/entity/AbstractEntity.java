@@ -1,13 +1,11 @@
 package za.co.setvin.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -23,10 +21,9 @@ public class AbstractEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Temporal(TemporalType.DATE)
-	private Date created;
+	private LocalDateTime created;
 	
 	public AbstractEntity() {
-		this.created = new Date();
+		this.created = LocalDateTime.now();
 	}
 }

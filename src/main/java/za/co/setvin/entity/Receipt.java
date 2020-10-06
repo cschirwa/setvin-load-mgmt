@@ -2,6 +2,7 @@ package za.co.setvin.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -26,7 +27,7 @@ public class Receipt extends AbstractEntity implements Serializable {
 	
 	private BigDecimal amountReceived;
 	
-	private Date dateReceived;
+	private LocalDate dateReceived;
 	
 	private BigDecimal unallocatedAmount;
 	

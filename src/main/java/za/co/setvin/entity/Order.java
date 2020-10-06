@@ -2,6 +2,7 @@ package za.co.setvin.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -25,11 +26,11 @@ public class Order extends AbstractEntity implements Serializable {
 
 	private String purchaseType;
 	
-	private Date orderDate;
+	private LocalDate orderDate;
 	
 	private BigDecimal orderTotalAmount;
 	
-	private Date paymentDate;
+	private LocalDate paymentDate;
 	
 	private BigDecimal amountPaid;
 	

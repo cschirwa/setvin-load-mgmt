@@ -2,9 +2,15 @@ package za.co.setvin.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,72 +23,83 @@ public class Load extends AbstractEntity implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	
 	private String orderNumber;
-	
 	private String description;
-	
 	private String instructions;
-	
-	private Date loadDate;
-	
-	private Date deliveryDate;
-	
+	private LocalDate loadDate;
+	private LocalDate deliveryDate;
 	private String fromAddress;
-	
 	private String fromSuburb;
-	
 	private String fromCountry;
-	
 	private String toAddress;
-	
 	private String toSuburb;
-
 	private String toCountry;
-	
 	private int quantity;
-	
 	private BigDecimal rate;
-	
 	private BigDecimal totalAmount;
-	
 	private boolean chargeVat;
-	
 	private String currency;
-	
 	private String clearingAgent;
-	
 	private String agentContact;
-	
 	private String exitBorder;
-	
 	private String entryBorder;
-	
 	private String freightStatement;
-	
 	
 //	@OneToMany(mappedBy = "load", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	@JsonIgnoreProperties("load")
 //	private Map<String, String> containerMap;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Customer customer;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Truck truck;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Driver driver;
+	
+	@OneToMany
+	private List<Trailer> trailers;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Status status;
 	
 	public Load() {
 		super();
-		this.loadDate = new Date();
+		this.loadDate = LocalDate.now();
 //		this.containerMap = new TreeMap<>();
 		this.chargeVat = true;
+		this.trailers = new ArrayList<>();
 	}
 
-	public Load(String orderNumber, String description, String instructions, Date loadDate, Date deliveryDate,
-			String fromAddress, String fromSuburb, String fromCountry, String toAddress, String toSuburb,
-			String toCountry, int quantity, BigDecimal rate, BigDecimal totalAmount, boolean chargeVat, String currency,
-			String clearingAgent, String agentContact, String exitBorder, String entryBorder, String freightStatement,
+	public Load(String orderNumber, 
+			String description, 
+			String instructions, 
+			LocalDate loadDate, 
+			LocalDate deliveryDate,
+			String fromAddress, 
+			String fromSuburb, 
+			String fromCountry, 
+			String toAddress, 
+			String toSuburb,
+			String toCountry, 
+			int quantity, 
+			BigDecimal rate, 
+			BigDecimal totalAmount, 
+			boolean chargeVat, 
+			String currency,
+			String clearingAgent,
+			String agentContact, 
+			String exitBorder, 
+			String entryBorder,
+			String freightStatement,
 //			Map<String, String> containerMap, 
-			Customer customer, Truck truck) {
+			Customer customer, 
+			Truck truck,
+			Driver driver,
+			List<Trailer> trailers,
+			Status status
+			) {
 		super();
 		this.orderNumber = orderNumber;
 		this.description = description;
@@ -108,6 +125,9 @@ public class Load extends AbstractEntity implements Serializable{
 //		this.containerMap = containerMap;
 		this.customer = customer;
 		this.truck = truck;
+		this.trailers = trailers;
+		this.driver = driver;
+		this.status = status;
 	}
 	
 	

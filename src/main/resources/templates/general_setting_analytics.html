@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description-gambolthemes" content="">
 	<meta name="author-gambolthemes" content="">
-	<title>Big Boon Shopping</title>
+	<title>Load Management System</title>
 	<link href="css/styles.css" rel="stylesheet">
 	<link href="css/admin-style.css" rel="stylesheet">
 
@@ -18,16 +18,16 @@
 
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-light bg-clr">
-		<a class="navbar-brand logo-brand" href="index}">Big Boon Shopping</a>
+		<a class="navbar-brand logo-brand" href="index}">Load Management System</a>
 		<button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
-		<a th:href="@{/admin/index}" class="frnt-link"><i class="fas fa-external-link-alt"></i>Home</a>
+		<a th:href="@{/index}" class="frnt-link"><i class="fas fa-external-link-alt"></i>Home</a>
 		<ul class="navbar-nav ml-auto mr-md-0">
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-					<a class="dropdown-item admin-dropdown-item" th:href="@{/admin/profile_add}">Edit Profile</a>
-					<a class="dropdown-item admin-dropdown-item" th:href="@{/admin/change_password}">Change Password</a>
-					<a class="dropdown-item admin-dropdown-item" th:href="@{/admin/login}">Logout</a>
+					<a class="dropdown-item admin-dropdown-item" th:href="@{/profile_add}">Edit Profile</a>
+					<a class="dropdown-item admin-dropdown-item" th:href="@{/change_password}">Change Password</a>
+					<a class="dropdown-item admin-dropdown-item" th:href="@{/login}">Logout</a>
 				</div>
 			</li>
 		</ul>
@@ -37,89 +37,119 @@
 			<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 				<div class="sb-sidenav-menu">
 					<div class="nav">
-						<a class="nav-link" th:href="@{/admin/index}">
+						<a class="nav-link" th:href="@{/index}">
 							<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 							Dashboard
 						</a>
 						<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-
-
-								<a class="nav-link sub_nav_link" th:href="@{/admin/post_categories}">Categories</a>
-								<a class="nav-link sub_nav_link" th:href="@{/admin/post_tags}">Tags</a>
+								<a class="nav-link sub_nav_link" th:href="@{/post_customers}">Customers</a>
+								<a class="nav-link sub_nav_link" th:href="@{/post_tags}">Tags</a>
 							</nav>
 						</div>
-						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories" aria-expanded="false" aria-controls="collapseCategories">
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLoads" aria-expanded="false" aria-controls="collapseLoads">
 							<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
-							Categories
+							Loads
 							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 						</a>
-						<div class="collapse" id="collapseCategories" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+						<div class="collapse" id="collapseLoads" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link sub_nav_link" th:href="@{/admin/category}">All Categories</a>
-								<a class="nav-link sub_nav_link" th:href="@{/admin/category_add}">Add Category</a>
+								<a class="nav-link sub_nav_link" th:href="@{/loads}">All Loads</a>
+								<a class="nav-link sub_nav_link" th:href="@{/load_add}">Add Load</a>
 							</nav>
 						</div>
-						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts">
-							<div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
-							Products
-							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-						</a>
-						<div class="collapse" id="collapseProducts" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link sub_nav_link" th:href="@{/admin/products}">All Products</a>
-								<a class="nav-link sub_nav_link" th:href="@{/admin/product_add}">Add Product</a>
-							</nav>
-						</div>
-						<a class="nav-link" th:href="@{/admin/orders}">
-							<div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders" aria-expanded="false" aria-controls="collapseOrders">
+							<div class="sb-nav-link-icon"><i class="fas fa-file-import"></i></div>
 							Orders
+							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 						</a>
-						<a class="nav-link" th:href="@{/admin/customers}">
+						<div class="collapse" id="collapseOrders" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link sub_nav_link" th:href="@{/orders}">All Orders</a>
+								<a class="nav-link sub_nav_link" th:href="@{/order_add}">Add Order</a>
+							</nav>
+						</div>
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTrucks" aria-expanded="false" aria-controls="collapseTrucks">
+							<div class="sb-nav-link-icon"><i class="fas fa-truck-moving"></i></div>
+							Trucks
+							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+						</a>
+						<div class="collapse" id="collapseTrucks" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link sub_nav_link" th:href="@{/trucks}">All Trucks</a>
+								<a class="nav-link sub_nav_link" th:href="@{/truck_add}">Add Truck</a>
+							</nav>
+						</div>
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDrivers" aria-expanded="false" aria-controls="collapseDrivers">
+							<div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
+							Drivers
+							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+						</a>
+						<div class="collapse" id="collapseDrivers" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link sub_nav_link" th:href="@{/drivers}">All Drivers</a>
+								<a class="nav-link sub_nav_link" th:href="@{/driver_add}">Add Driver</a>
+							</nav>
+						</div>
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCustomers" aria-expanded="false" aria-controls="collapseCustomers">
 							<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
 							Customers
+							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 						</a>
-						<a class="nav-link" th:href="@{/admin/offers}">
-							<div class="sb-nav-link-icon"><i class="fas fa-gift"></i></div>
-							Offers
+						<div class="collapse" id="collapseCustomers" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link sub_nav_link" th:href="@{/customers}">All Customers</a>
+								<a class="nav-link sub_nav_link" th:href="@{/customer_add}">Add Customer</a>
+							</nav>
+						</div>
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSuppliers" aria-expanded="false" aria-controls="collapseSuppliers">
+							<div class="sb-nav-link-icon"><i class="fas fa-user-friends"></i></div>
+							Suppliers
+							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 						</a>
-						<a class="nav-link active collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">
+						<div class="collapse" id="collapseSuppliers" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link sub_nav_link" th:href="@{/suppliers}">All Suppliers</a>
+								<a class="nav-link sub_nav_link" th:href="@{/supplier_add}">Add Supplier</a>
+							</nav>
+						</div>
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">
 							<div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
 							Settings
 							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 						</a>
 						<div class="collapse" id="collapseSettings" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link sub_nav_link active" th:href="@{/admin/general_setting}">General Settings</a>
-								<a class="nav-link sub_nav_link" th:href="@{/admin/payment_setting}">Payment Settings</a>
-								<a class="nav-link sub_nav_link" th:href="@{/admin/email_setting}">Email Settings</a>
+								<a class="nav-link sub_nav_link" th:href="@{/general_setting}">General Settings</a>
+								<a class="nav-link sub_nav_link" th:href="@{/payment_setting}">Payment Settings</a>
+								<a class="nav-link sub_nav_link" th:href="@{/email_setting}">Email Settings</a>
 							</nav>
 						</div>
-						<a class="nav-link" th:href="@{/admin/reports}">
+						<a class="nav-link" th:href="@{/reports}">
 							<div class="sb-nav-link-icon"><i class="fas fa-chart-bar"></i></div>
 							Reports
 						</a>
 					</div>
-				</div>
-			</nav>
-		</div>
+			</div>
+		</nav>
+	</div>
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid">
 					<h2 class="mt-30 page-title">General Setting</h2>
 					<ol class="breadcrumb mb-30">
-						<li class="breadcrumb-item"><a th:href="@{/admin/index}">Dashboard</a></li>
+						<li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
 						<li class="breadcrumb-item active">General Setting</li>
 					</ol>
 					<div class="row">
 						<div class="col-lg-4 col-md-6">
 							<div class="left-side-tabs">
 								<div class="dashboard-left-links">
-									<a th:href="@{/admin/general_setting}" class="user-item"><i class="fas fa-cogs"></i>Site Setting</a>
-									<a th:href="@{/admin/general_setting_logo}" class="user-item"><i class="far fa-image"></i>Logo</a>
-									<a th:href="@{/admin/general_setting_favicon}" class="user-item"><i class="far fa-image"></i>Favicon</a>
-									<a th:href="@{/admin/general_setting_analytics}" class="user-item active"><i class="fas fa-chart-line"></i>Google Analytics</a>
-									<a th:href="@{/admin/general_setting_contact}" class="user-item"><i class="fas fa-briefcase"></i>Contact Setting</a>
+									<a th:href="@{/general_setting}" class="user-item"><i class="fas fa-cogs"></i>Site Setting</a>
+									<a th:href="@{/general_setting_logo}" class="user-item"><i class="far fa-image"></i>Logo</a>
+									<a th:href="@{/general_setting_favicon}" class="user-item"><i class="far fa-image"></i>Favicon</a>
+									<a th:href="@{/general_setting_analytics}" class="user-item active"><i class="fas fa-chart-line"></i>Google Analytics</a>
+									<a th:href="@{/general_setting_contact}" class="user-item"><i class="fas fa-briefcase"></i>Contact Setting</a>
 								</div>
 							</div>
 						</div>
@@ -149,7 +179,7 @@
 			<footer class="py-4 bg-footer mt-auto">
 				<div class="container-fluid">
 					<div class="d-flex align-items-center justify-content-between small">
-						<div class="text-muted-1">© 2020 <b>Big Boon Shopping</b></div>
+						<div class="text-muted-1">© 2020 <b>Load Management System</b></div>
 						<div class="footer-links">
 							<a href="#">Privacy Policy</a>
 							<a href="#">Terms &amp; Conditions</a>

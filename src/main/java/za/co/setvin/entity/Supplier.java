@@ -1,7 +1,7 @@
 package za.co.setvin.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 
@@ -26,6 +26,6 @@ public class Supplier extends AbstractEntity implements Serializable {
 	
 	private Long invoiceNumber;
 	
-	private Date invoiceDate;
+	private LocalDate invoiceDate;
 	
 }
