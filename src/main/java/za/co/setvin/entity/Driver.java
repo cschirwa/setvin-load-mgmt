@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,12 +25,19 @@ public class Driver extends AbstractEntity implements Serializable{
 	private String nickname;
 	private String idNumber;
 	private String passportNumber;
-	@ManyToOne
-	private Country nationality;
+	private String nationality;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dob;
+	
 	private String licenseNumber;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate licenseExpiry;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate medicalsExpiry;
+	
 	@OneToOne
 	private Truck currentTruck;
 }

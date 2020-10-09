@@ -90,7 +90,7 @@
 													<td th:text="${truck.vin}">Truck Vin</td>
 													<td th:text="${truck.engineNumber}">Truck Vin</td>
 													<td th:text="${#temporals.format(truck.created, 'dd MMM yyyy')}">Created</td>
-													<td th:text="*{truck.driver?.firstname}">Driver</td>
+													<td th:text="${truck.driver}">Driver</td>
 													<td th:text="${#temporals.format(truck.licenseDiscExpiry, 'dd MMM yyyy')}">Disc Expiry</td>
 													<td class="action-btns">
 														<a th:href="@{/truck_view/{id}(id=${truck.id})}" class="view-shop-btn" title="View"><i class="fas fa-eye"></i></a>

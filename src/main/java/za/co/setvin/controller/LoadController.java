@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -61,8 +62,14 @@ public class LoadController {
 		return "load_add";
 	}
 	
-	@GetMapping("load_view")
-	public String viewLoad() {
+	@GetMapping("/load_view/{loadId}")
+	public String viewLoad(@PathVariable String loadId, 
+			Model model) {
+		model.addAttribute("load", loadService.get(Long.parseLong(loadId)));
+		model.addAttribute("customer", loadService.get(Long.parseLong(loadId)).getCustomer());
+		model.addAttribute("subTotal", loadService.getSubTotal(loadService.get(Long.parseLong(loadId))));
+		model.addAttribute("vat", loadService.getVat(loadService.get(Long.parseLong(loadId))));
+		model.addAttribute("total", loadService.getTotal(loadService.get(Long.parseLong(loadId))));
 		return "load_view";
 	}
 	

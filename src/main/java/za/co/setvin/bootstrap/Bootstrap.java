@@ -69,8 +69,8 @@ public class Bootstrap {
 		List<Truck> trucks = Arrays.asList(
 				new Truck("FB00HL-GP","Volvo","FH440","VHKT123456789543-GH"),
 				new Truck("FB01HL-GP","Volvo","FH440","VHKT123456a12389-GH"),
-				new Truck("FB02HL-GP","Mercedez","Actros","MB123456789543-GH"),
-				new Truck("FB03HL-GP","Mercedez","Actros","MBKT123456789543-GH")
+				new Truck("FB02HL-GP","Mercedez","Actros","MB123456789543-GH","MB5678123123123123"),
+				new Truck("FB03HL-GP","Mercedez","Actros","MBKT123456789543-GH","mb567891231231232")
 				);
 		trucks.forEach(truck -> truckService.add(truck));
 	}
@@ -98,6 +98,7 @@ public class Bootstrap {
 		customer.setVatNumber("4111222333");
 		customer.setEnterpriseNumber("2010/123456/78");
 		customer.setAddress("7 The Algarve, Paulshof 2191");
+		customer.setBalance(new BigDecimal(50000));
 		customerService.add(customer);
 	}
 	
@@ -111,7 +112,7 @@ public class Bootstrap {
 		driver.setLicenseNumber("12312312333");
 		driver.setLicenseExpiry(LocalDate.now());
 		driver.setMedicalsExpiry(LocalDate.now());
-		driver.setNationality(countryService.findByName("Zimbabwe").get());
+		driver.setNationality("Zimbabwe");
 		driver.setCurrentTruck(truck);
 		driver.setNickname("GREENE");
 		driver.setPassportNumber("FN123456");

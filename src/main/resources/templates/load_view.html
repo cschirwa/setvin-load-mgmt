@@ -19,141 +19,149 @@
 <body class="sb-nav-fixed">
 	<div th:replace="fragments/topnav::topnavbar"></div>
 	<div id="layoutSidenav">
-	<div th:replace="fragments/sidenav::navbar"></div>
-	<div id="layoutSidenav_content">
+		<div th:replace="fragments/sidenav::navbar"></div>
+		<div id="layoutSidenav_content">
 			<main>
-				<div class="container-fluid">
-					<h2 class="mt-30 page-title">Loads</h2>
+				<div class="container-fluid" th:object="${load}">
+					<h2 class="mt-30 page-title">View Load</h2>
 					<ol class="breadcrumb mb-30">
 						<li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
-						<li class="breadcrumb-item"><a th:href="@{/orders}">Loads</a></li>
-						<li class="breadcrumb-item active">View Load</li>
+						<li class="breadcrumb-item"><a th:href="@{/customers}">Loads</a></li>
+						<li class="breadcrumb-item active">Load View</li>
 					</ol>
 					<div class="row">
-						<div class="col-xl-12 col-md-12">
+						<div class="col-lg-4 col-md-5">
 							<div class="card card-static-2 mb-30">
-								<th:object="${load}">
-								<div class="card-title-2">
-									<h2 class="title1458">Invoice Number </h2>
-									<span class="order-id" th:text="${order.id}">Order #ORDR-123456</span>
+								<div class="card-body-table">
+									<div class="shop-content-left pd-20">
+										<div class="shop_img">
+											<img src="images/shop.svg" alt="">
+										</div>
+										<div class="shop-dt-left">
+											<h4 th:text="${load.customer?.name}">Customer Name</h4>
+											<span th:text="${load.customer?.address}">Address</span>
+											<br><span th:text="${load.customer?.country}">Country</span></br>
+										</div>
+									</div>
 								</div>
-								<div class="invoice-content">
-									<div class="row">
-										<div class="col-lg-6 col-sm-6">
-											<div class="ordr-date" th:text="${#temporals.format(order.orderDate,'dd/MM/yyyy')}">
-												<b>Order Date :</b> 29 May 2020
-											</div>
+							</div>
+							<div class="card card-static-2 mb-30" th:object="${customer}">
+								<div class="card-body-table">
+									<div class="shopowner-content-left pd-20">
+										<div class="shopowner-dt-left">
+											<h4 th:text="${customer.name}">John Doe</h4>
+											<span>Customer Details</span>
 										</div>
-										<div class="col-lg-6 col-sm-6">
-											<div class="ordr-date right-text" th:text="${order.address}">
-												<b>Order Date :</b><br>
-												#0000, St No. 8,<br>
-												Shahid Karnail Singh Nagar,<br>
-												MBD Mall,<br>
-												Frozpur road,<br>
-												Ludhiana,<br>
-												141001<br>
+										<div class="shopowner-dts">
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Phone</span>
+												<span class="right-dt" th:text="${customer.phone}">+918437176189</span>
 											</div>
-										</div>
-										<div class="col-lg-12">
-											<div class="card card-static-2 mb-30 mt-30">
-												<div class="card-title-2">
-													<h4>Order Items</h4>
-												</div>
-												<div class="card-body-table">
-													<div class="table-responsive">
-														<table class="table ucp-table table-hover">
-															<thead>
-																<tr>
-																	<th style="width:130px">#</th>
-																	<th>Item</th>
-																	<th style="width:150px" class="text-center">Price</th>
-																	<th style="width:150px" class="text-center">Qty</th>
-																	<th style="width:100px" class="text-center">Total</th>
-																</tr>
-															</thead>
-															<tbody>
-																<tr th:each="lineItem: ${load.lineItems}">
-																	<td>1</td>
-																	<td>
-																		<a href="#" target="_blank" th:text="${lineItem.product.name}">Truck Title Here</a>
-																	</td>
-																	<td class="text-center" th:text="${lineItem.product.price}">$15</td>
-																	<td class="text-center" th:text="${lineItem.quantity}">1</td>
-																	<td class="text-center" th:text="${lineItem.lineTotal}">$15</td>
-																</tr>
-																<!-- <tr>
-																<td>2</td>
-																<td>
-																<a href="#" target="_blank">Truck Title Here</a>
-															</td>
-															<td class="text-center">$12</td>
-															<td class="text-center">1</td>
-															<td class="text-center">$12</td>
-														</tr> -->
-													</tbody>
-												</table>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Email</span>
+												<span class="right-dt" th:text="${customer.email}">g@gmail.com</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Address</span>
+												<span class="right-dt" th:text="${customer.address}">Ludhiana, Punjab</span>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="col-lg-7"></div>
-								<div class="col-lg-5">
-									<div class="order-total-dt">
-										<div class="order-total-left-text">
-											Sub Total
-										</div>
-										<div class="order-total-right-text" th:text="${#numbers.formatDecimal(subTotal, 0, 'COMMA', 2, 'POINT')}">
-											$27
-										</div>
-									</div>
-									<div class="order-total-dt">
-										<div class="order-total-left-text">
-											Delivery Fees
-										</div>
-										<div class="order-total-right-text" th:text="${#numbers.formatDecimal(delivery, 0, 'COMMA', 2, 'POINT')}">
-											$0
-										</div>
-									</div>
-									<div class="order-total-dt">
-										<div class="order-total-left-text">
-											Vat Amount
-										</div>
-										<div class="order-total-right-text" th:text="${#numbers.formatDecimal(vat, 0, 'COMMA', 2, 'POINT')}">
-											$27
-										</div>
-									</div>
-									<div class="order-total-dt">
-										<div class="order-total-left-text">
-											Total Amount
-										</div>
-										<div class="order-total-right-text"  th:text="${#numbers.formatDecimal(total, 0, 'COMMA', 2, 'POINT')}">
-											$27
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-7"></div>
-								<div class="col-lg-5">
-									<div class="select-status">
-										<label for="status">Status*</label>
-										<div class="status-active" th:text="${order.status}">
-											Pending
-										</div>
+							</div>
+						</div>
+						<div class="col-lg-8 col-md-7">
+							<div class="card card-static-2 mb-30">
+								<div class="card-body-table">
+									<div class="shopowner-content-left pd-20">
+										<div class="shopowner-dts mt-0">
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Load Number :</span>
+												<span class="right-dt" th:text="${load.id}">Load#</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Order Number</span>
+												<span class="right-dt" th:text="${load.orderNumber}">Order123</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Load Date</span>
+												<span class="right-dt" th:text="${#temporals.format(load.loadDate,'dd MMM yyyy')}">loadDate</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Delivery Date</span>
+												<span class="right-dt" th:text="${#temporals.format(load.deliveryDate,'dd MMM yyyy')}">deliveryDate</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">From </span>
+												<span class="right-dt" th:text="${load.fromAddress+', '+load.fromSuburb+', '+load.fromCountry}">from</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">To </span>
+												<span class="right-dt" th:text="${load.toAddress+', '+load.toSuburb+', '+load.toCountry}">to</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Quantity</span>
+												<span class="right-dt" th:text="${load.quantity}">Qty</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Rate</span>
+												<span class="right-dt" th:text="${load.rate}">rate</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Total excl. VAT</span>
+												<span class="right-dt" th:text="${subTotal}">subTotal</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">VAT</span>
+												<span class="right-dt" th:text="${vat}">vat</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Total</span>
+												<span class="right-dt" th:text="${total}">Total</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Clearing Agent</span>
+												<span class="right-dt" th:text="${load.clearingAgent}">Clearing Agent</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Agent Contact</span>
+												<span class="right-dt" th:text="${load.agentContact}">Agent Contact</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Agent Contact</span>
+												<span class="right-dt" th:text="${load.agentPhone}">Agent phone</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Instructions</span>
+												<span class="right-dt" th:text="${load.instructions}">instructions</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Description</span>
+												<span class="right-dt" th:text="${load.description}">desc</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Exit Border</span>
+												<span class="right-dt" th:text="${load.exitBorder}">border</span>
+											</div>
+											<div class="shopowner-dt-list">
+												<span class="left-dt">Entry Border</span>
+												<span class="right-dt" th:text="${load.entryBorder}">border</span>
+											</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</main>
+			<div th:replace="fragments/footer::footer"></div>
 		</div>
-	</main>
-	<div th:replace="fragments/footer::footer"></div>
-</div>
-</div>
-<script src="../js/jquery-3.4.1.min.js"></script>
-<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../js/scripts.js"></script>
+	</div>
+
+	<!-- Javascripts -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="js/scripts.js"></script>
 
 </body>
 </html>

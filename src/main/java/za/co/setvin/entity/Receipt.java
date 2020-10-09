@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -27,6 +29,7 @@ public class Receipt extends AbstractEntity implements Serializable {
 	
 	private BigDecimal amountReceived;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateReceived;
 	
 	private BigDecimal unallocatedAmount;

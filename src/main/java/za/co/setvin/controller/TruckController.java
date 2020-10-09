@@ -76,7 +76,7 @@ public class TruckController {
 	
 	
 	@PostMapping("/truck_edit/{truckId}")
-	public String postEditTruck(@PathVariable("truckId") String truckId,
+	public String postEditTruck(@PathVariable String truckId,
 			@ModelAttribute Truck truck,
 			BindingResult result, 
 			RedirectAttributes attributes) {

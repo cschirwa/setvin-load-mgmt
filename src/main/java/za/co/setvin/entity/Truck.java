@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -27,6 +28,7 @@ public class Truck extends AbstractEntity implements Serializable{
 	private String engineNumber;
 	
 	private String driver;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate licenseDiscExpiry;
 	
 	public Truck(String registration, String make, String model, String vin) {
@@ -35,5 +37,14 @@ public class Truck extends AbstractEntity implements Serializable{
 		this.model = model;
 		this.vin = vin;
 	}
+	
+	public Truck(String registration, String make, String model, String vin, String engineNumber) {
+		this.registration = registration;
+		this.make = make;
+		this.model = model;
+		this.vin = vin;
+		this.engineNumber = engineNumber;
+	}
+	
 
 }

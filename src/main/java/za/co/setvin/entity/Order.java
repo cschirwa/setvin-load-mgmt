@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -26,10 +28,12 @@ public class Order extends AbstractEntity implements Serializable {
 
 	private String purchaseType;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate orderDate;
 	
 	private BigDecimal orderTotalAmount;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate paymentDate;
 	
 	private BigDecimal amountPaid;

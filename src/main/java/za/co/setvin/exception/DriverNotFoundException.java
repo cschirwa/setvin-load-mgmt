@@ -10,5 +10,9 @@ public class DriverNotFoundException extends RuntimeException{
 		super(msg);
 	}
 	
+	public DriverNotFoundException(String msg, Throwable e) {
+		super(msg, e);
+	}
+	
 	
 }

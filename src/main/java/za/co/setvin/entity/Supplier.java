@@ -5,6 +5,8 @@ import java.time.LocalDate;
 
 import javax.persistence.Entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -26,6 +28,7 @@ public class Supplier extends AbstractEntity implements Serializable {
 	
 	private Long invoiceNumber;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate invoiceDate;
 	
 }

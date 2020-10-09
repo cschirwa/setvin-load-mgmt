@@ -16,6 +16,10 @@ public class DriverService {
 	@Autowired
 	private DriverRepository driverRepository;
 	
+	public Driver findById(Long id) {
+		return driverRepository.findById(id).orElseThrow(() -> new DriverNotFoundException("Driver "+id+" not found on database"));
+	}
+	
 	public Driver add(Driver driver) {
 		if(driver!=null)
 			return driverRepository.save(driver);

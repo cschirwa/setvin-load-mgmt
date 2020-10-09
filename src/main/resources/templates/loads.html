@@ -78,7 +78,7 @@
 													<th>From</th>
 													<th>To</th>
 													<th>Status</th>
-													<th>Currency</th>
+													<th class="text-right">Currency</th>
 													<th class="money-right">Invoice Value</th>
 													<th>Actions</th>
 												</tr>
@@ -96,7 +96,7 @@
 													<td th:text="${load.fromSuburb + ', ' + load.fromCountry}">From</td>
 													<td th:text="${load.toSuburb + ', ' + load.toCountry}">To</td>
 													<td th:text="${load.status?.narration}"><span class="badge-item badge-status">Active</span></td>
-													<td th:text="${load.customer?.defaultCcy}">Currency</td>
+													<td th:text="${load.customer?.defaultCcy}" class="text-right">Currency</td>
 													<td th:text="${#numbers.formatDecimal(load.totalAmount, 0, 'DEFAULT', 2, 'POINT')}" class="money-right">Invoice Value</td>
 													<td class="action-btns">
 														<a th:href="@{/load_view/{id} (id=${load.id})}" class="view-shop-btn"><i class="fas fa-eye"></i> View</a>

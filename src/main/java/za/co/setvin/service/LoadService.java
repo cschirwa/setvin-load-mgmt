@@ -1,5 +1,6 @@
 package za.co.setvin.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,14 @@ public class LoadService {
 	@Autowired
 	private LoadRepository loadRepository;
 	
+	private static final double VAT_RATE = 0.15D;
+	
+	
+	public Load get(Long id) {
+		if(loadRepository.findById(id).isPresent())
+			return loadRepository.findById(id).get();
+		return null;
+	}
 	
 	public List<Load> getAll(){
 		List<Load> loads = new ArrayList<>();
@@ -45,7 +54,7 @@ public class LoadService {
 		log.error("Load %s not found on database", id);
 	}
 	
-	public Load amend(Long id, Load load) {
+	public Load amend(Long id, final Load load) {
 		Load dbLoad = loadRepository.findById(id).isPresent() ? loadRepository.findById(id).get() : null;
 		if(dbLoad!=null) {
 			dbLoad = load;
@@ -53,6 +62,26 @@ public class LoadService {
 			return loadRepository.save(dbLoad);
 		}
 		return loadRepository.save(load);
+	}
+	
+	public BigDecimal getSubTotal(final Load load) {
+		BigDecimal subTotal = new BigDecimal(0);
+		if(load!=null) 
+			subTotal.add(new BigDecimal(load.getQuantity()).multiply((load.getRate())));
+		return subTotal;
+		
+	}
+	
+	public BigDecimal getVat(final Load load) {
+		BigDecimal vat = new BigDecimal(0);
+		if(load!=null && load.getCustomer()!=null && !load.getCustomer().getVatNumber().isEmpty()) {
+			vat = getSubTotal(load).multiply(new BigDecimal(VAT_RATE));
+		}
+		return vat;
+	}
+	
+	public BigDecimal getTotal(final Load load) {
+		return getSubTotal(load).add(getVat(load));
 	}
 
 

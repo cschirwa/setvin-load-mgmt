@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,7 +28,9 @@ public class Load extends AbstractEntity implements Serializable{
 	private String orderNumber;
 	private String description;
 	private String instructions;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate loadDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate deliveryDate;
 	private String fromAddress;
 	private String fromSuburb;
@@ -41,6 +45,7 @@ public class Load extends AbstractEntity implements Serializable{
 	private String currency;
 	private String clearingAgent;
 	private String agentContact;
+	private String agentPhone;
 	private String exitBorder;
 	private String entryBorder;
 	private String freightStatement;
@@ -89,7 +94,8 @@ public class Load extends AbstractEntity implements Serializable{
 			boolean chargeVat, 
 			String currency,
 			String clearingAgent,
-			String agentContact, 
+			String agentContact,
+			String agentPhone,
 			String exitBorder, 
 			String entryBorder,
 			String freightStatement,
@@ -119,6 +125,7 @@ public class Load extends AbstractEntity implements Serializable{
 		this.currency = currency;
 		this.clearingAgent = clearingAgent;
 		this.agentContact = agentContact;
+		this.agentPhone = agentPhone;
 		this.exitBorder = exitBorder;
 		this.entryBorder = entryBorder;
 		this.freightStatement = freightStatement;
