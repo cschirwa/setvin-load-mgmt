@@ -76,8 +76,8 @@ public class CustomerController {
 			@ModelAttribute Customer customer, 
 			BindingResult result,
 			RedirectAttributes attributes) {
-		customerService.add(customer);
 		if(!result.hasErrors()) {
+			customerService.add(customer);
 			attributes.addFlashAttribute("message", "Success");
 			attributes.addFlashAttribute("alertClass", "alert-success");
 			return "redirect:customers";
@@ -96,7 +96,6 @@ public class CustomerController {
 		if(!result.hasErrors()) {
 			Customer dbCustomer = customerService.findCustomer(Long.parseLong(customerId));
 			if(dbCustomer!=null) {
-				dbCustomer = customer;
 				customerService.amend(Long.parseLong(customerId), customer);
 			}
 			attributes.addFlashAttribute("message", "Failed");

@@ -47,4 +47,13 @@ public class DriverService {
 		return driverRepository.findByFirstname(name).orElseThrow(() -> new DriverNotFoundException());
 	}
 
+	public Driver amend(long driverId, Driver driver) {
+		if(driverRepository.existsById(driverId)) {
+			driver.setId(driverId);
+			return driverRepository.save(driver);
+		}
+		return driverRepository.save(driver);
+		
+	}
+
 }
