@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description-setvinlogistics" content="">
+	<meta name="author-setvin" content="">
+	<title>Load Management System</title>
+	<link href="../css/styles.css" rel="stylesheet">
+	<link href="../css/admin-style.css" rel="stylesheet">
+
+	<!-- Vendor Stylesheets -->
+	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+	<!-- Tail Select Stylesheets -->
+	<link href="../vendor/tail.select/css/bootstrap4/tail.select-default.css" rel="stylesheet">
+</head>
+
+<body class="sb-nav-fixed">
+	<div th:replace="fragments/topnav::topnavbar"></div>
+	<div id="layoutSidenav">
+		<div th:replace="fragments/sidenav::navbar"></div>
+			<div id="layoutSidenav_content">
+				<main>
+					<div class="container-fluid">
+						<h2 class="mt-30 page-title">Drivers</h2>
+						<ol class="breadcrumb mb-30">
+							<li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
+							<li class="breadcrumb-item"><a th:href="@{/drivers}">Drivers</a></li>
+							<li class="breadcrumb-item active">Driver View</li>
+						</ol>
+						<div class="row">
+							<div class="col-lg-5 col-md-6">
+								<div class="card card-static-2 mb-30">
+									<div class="card-body-table">
+										<div class="shopowner-content-left text-center pd-20" th:object="${driver}">
+											<div class="shopowner-dt-left mt-4">
+												<h4 th:text="${driver.firstname + ' ' + driver.lastname}">John Doe</h4>
+												<span>Driver Details</span>
+											</div>
+											<div class="shopowner-dts">
+												<div class="shopowner-dt-list">
+													<span class="left-dt">First Name</span>
+													<span class="right-dt" th:text="${driver.firstname}">firstname</span>
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Last Name</span>
+													<span class="right-dt" th:text="${driver.lastname}">lastname</span>
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Nickname</span>
+													<span class="right-dt" th:text="${driver.nickname}">nickname</span>
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">ID Number</span>
+													<span class="right-dt" th:text="${driver.idNumber}">ID</span>
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Passport Number</span>
+													<span class="right-dt" th:text="${driver.passportNumber}">Passport</span>
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Date Of Birth</span>
+													<span class="right-dt" th:text="${driver.dob}">DOB</span>
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Nationality</span>
+													<span class="right-dt" th:text="${driver.nationality}">South Africa</span>
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">License Number</span>
+													<span class="right-dt" th:text="${driver.licenceNumber}">Licence Number</span>
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">License Expiry</span>
+													<span class="right-dt" th:text="${driver.licenceExpiry}">Licence Expiry</span>
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Medicals Expiry</span>
+													<span class="right-dt" th:text="${driver.medicalsExpiry}">License</span>
+												</div>
+												<div class="shopowner-dt-list">
+													<span class="left-dt">Current Truck</span>
+													<span class="right-dt" th:text="${driver.currentTruck?.registration}">Truck</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</main>
+				<div th:replace="fragments/footer::footer"></div>
+			</div>
+		</div>
+
+		<!-- Javascripts -->
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="../vendor/tail.select/js/tail.select-full.min.js"></script>
+		<script src="../js/scripts.js"></script>
+		<script>
+		tail.select(".select");
+		</script>
+
+	</body>
+	</html>

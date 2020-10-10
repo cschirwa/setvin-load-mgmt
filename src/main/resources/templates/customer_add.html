@@ -98,6 +98,10 @@
 												</div>
 											</div>
 											<button class="save-btn hover-btn" type="submit">Save Customer</button>
+											<div th:switch="${message}">
+												<div></div>
+												<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
+											</div>
 										</form>
 									</div>
 								</div>

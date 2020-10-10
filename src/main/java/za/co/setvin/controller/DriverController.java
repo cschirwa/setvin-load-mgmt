@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import za.co.setvin.entity.Country;
 import za.co.setvin.entity.Driver;
+import za.co.setvin.service.CountryService;
 import za.co.setvin.service.DriverService;
 
 @Controller
@@ -18,6 +20,9 @@ public class DriverController {
 	
 	@Autowired 
 	private DriverService driverService;
+	
+	@Autowired
+	private CountryService countryService;
 
 	@GetMapping("/drivers")
 	public String showDrivers(Model model) {
@@ -34,6 +39,7 @@ public class DriverController {
 	@GetMapping("/driver_add")
 	public String addDriver(Model model) {
 		model.addAttribute("driver", new Driver());
+		model.addAttribute("countryList", countryService.getAll());
 		return "driver_add";
 	}
 	
@@ -55,6 +61,7 @@ public class DriverController {
 	@GetMapping("/driver_edit/{id}")
 	public String viewEditDriver(@PathVariable String id, Model model) {
 		model.addAttribute("driver", driverService.findById(Long.valueOf(id)));
+		model.addAttribute("countryList", countryService.getAll());
 		return "driver_edit";
 	}
 	

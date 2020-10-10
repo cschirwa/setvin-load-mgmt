@@ -65,7 +65,7 @@ public class TruckController {
 			truckService.add(truck);
 			attributes.addFlashAttribute("message", "Success");
 			attributes.addFlashAttribute("alertClass", "alert-success");
-			log.info("Truck %s added successfully to database", truck.getRegistration());
+			log.info("Truck " + truck.getRegistration() + " added successfully to database");
 			return "redirect:/trucks";
 		}
 		attributes.addFlashAttribute("message", "Failed");

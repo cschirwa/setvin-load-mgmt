@@ -109,8 +109,8 @@ public class Bootstrap {
 		driver.setLastname("Matika");
 		driver.setDob(LocalDate.of(1991, 04, 23));
 		driver.setIdNumber("7509026128188");
-		driver.setLicenseNumber("12312312333");
-		driver.setLicenseExpiry(LocalDate.now());
+		driver.setLicenceNumber("12312312333");
+		driver.setLicenceExpiry(LocalDate.now());
 		driver.setMedicalsExpiry(LocalDate.now());
 		driver.setNationality("Zimbabwe");
 		driver.setCurrentTruck(truck);
