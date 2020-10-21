@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import za.co.setvin.entity.Supplier;
+import za.co.setvin.service.CountryService;
 import za.co.setvin.service.SupplierService;
 
 @Controller
@@ -19,6 +20,8 @@ public class SupplierController {
 
 	@Autowired
 	private SupplierService supplierService;
+	
+	@Autowired CountryService countryService;
 	
 	@GetMapping("/suppliers")
 	public String showSuppliers(Model model) {
@@ -28,6 +31,7 @@ public class SupplierController {
 	
 	@GetMapping("/supplier/add")
 	public String addSupplier(Model model) {
+		model.addAttribute("countryList", countryService.getAll());
 		model.addAttribute("supplier", new Supplier());
 		return "supplier_add";
 	}
@@ -48,11 +52,12 @@ public class SupplierController {
 	
 	@PostMapping("/supplier/edit/{id}")
 	public String postEditSupplier(@PathVariable String id,
+			@ModelAttribute Supplier supplier,
 			BindingResult result,
-			RedirectAttributes attributes,
-			Model model
+			RedirectAttributes attributes
 			) {
 		if(!result.hasErrors()) {
+			supplierService.amend(Long.parseLong(id), supplier);
 			attributes.addFlashAttribute("message", "Success");
 			attributes.addFlashAttribute("alertClass", "alert-success");
 			return "redirect:/suppliers";

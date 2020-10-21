@@ -194,7 +194,6 @@ public class Bootstrap {
 		supp.setName("Cartwright");
 		supp.setCreated(LocalDateTime.now());
 		supp.setInvoiceDate(LocalDate.now());
-		supp.setInvoiceNumber("INV123456");
 		supp.setPhone("087878787877");
 		supp.setEmail("c@cartwright.com");
 		supp.setContact("Rickie Fowler");
@@ -204,7 +203,6 @@ public class Bootstrap {
 		supp2.setName("Estado Natural");
 		supp2.setCreated(LocalDateTime.now());
 		supp2.setInvoiceDate(LocalDate.now());
-		supp2.setInvoiceNumber("INV999");
 		supp2.setPhone("0334455877");
 		supp2.setEmail("s@estu.com");
 		supp2.setContact("James Brown");

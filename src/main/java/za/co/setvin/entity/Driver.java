@@ -26,7 +26,6 @@ public class Driver extends AbstractEntity implements Serializable{
 	private String lastname;
 	private String nickname;
 	
-//	@Size(min = 13, max = 13)
 	@Pattern(regexp = "^(?:[0-9]{13}|)$")
 	private String idNumber;
 	private String passportNumber;

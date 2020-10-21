@@ -56,10 +56,8 @@ public class Load extends AbstractEntity implements Serializable{
 	
 	private String customer;
 	
-//	@ManyToOne(fetch = FetchType.EAGER)
 	private String truck;
 	
-//	@ManyToOne(fetch = FetchType.EAGER)
 	private String driver;
 	
 	@OneToMany
@@ -71,7 +69,6 @@ public class Load extends AbstractEntity implements Serializable{
 	public Load() {
 		super();
 		this.loadDate = LocalDate.now();
-//		this.containerMap = new TreeMap<>();
 		this.chargeVat = true;
 		this.trailers = new ArrayList<>();
 	}
@@ -98,7 +95,6 @@ public class Load extends AbstractEntity implements Serializable{
 			String exitBorder, 
 			String entryBorder,
 			String freightStatement,
-//			Map<String, String> containerMap, 
 			String customer, 
 			String truck,
 			String driver,
@@ -128,7 +124,6 @@ public class Load extends AbstractEntity implements Serializable{
 		this.exitBorder = exitBorder;
 		this.entryBorder = entryBorder;
 		this.freightStatement = freightStatement;
-//		this.containerMap = containerMap;
 		this.customer = customer;
 		this.truck = truck;
 		this.trailers = trailers;

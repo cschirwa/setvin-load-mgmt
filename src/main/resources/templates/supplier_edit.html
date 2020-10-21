@@ -7,12 +7,12 @@
 	<meta name="description-setvinlogistics" content="">
 	<meta name="author-setvin" content="">
 	<title>Load Management System</title>
-	<link href="../css/styles.css" rel="stylesheet">
-	<link href="../css/admin-style.css" rel="stylesheet">
+	<link href="../../css/styles.css" rel="stylesheet">
+	<link href="../../css/admin-style.css" rel="stylesheet">
 
 	<!-- Vendor Stylesheets -->
-	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+	<link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 
 </head>
 
@@ -25,53 +25,43 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid">
-					<h2 class="mt-30 page-title">Customers</h2>
+					<h2 class="mt-30 page-title">Suppliers</h2>
 					<ol class="breadcrumb mb-30">
 						<li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
-						<li class="breadcrumb-item"><a th:href="@{/customers}">Customers</a></li>
-						<li class="breadcrumb-item active">Customer Edit</li>
+						<li class="breadcrumb-item"><a th:href="@{/suppliers}">Suppliers</a></li>
+						<li class="breadcrumb-item active">Supplier Edit</li>
 					</ol>
 					<div class="row">
 						<div class="col-lg-6 col-md-6">
 							<div class="card card-static-2 mb-30">
 								<div class="card-title-2">
-									<h4>Edit Customer</h4>
+									<h4>Edit Supplier</h4>
 								</div>
+								<form th:action="@{/supplier/edit/__${supplier.id}__}" th:object="${supplier}" method="post" enctype="multipart/form-data">
 								<div class="card-body-table">
 									<div class="news-content-right pd-20">
 										<div class="form-group">
 											<label class="form-label">Name*</label>
-											<input type="text" class="form-control" value="Joginder Singh" placeholder="Enter Full Name" required>
+											<input type="text" class="form-control" value="Joginder Singh" th:field="*{name}" required>
 										</div>
 										<div class="form-group">
-											<label class="form-label">Username*</label>
-											<input type="text" class="form-control" value="joginder" placeholder="Enter Username" required>
+											<label class="form-label">Contact Person*</label>
+											<input type="text" class="form-control" value="joginder" th:field="*{contact}"  required>
 										</div>
 										<div class="form-group">
 											<label class="form-label">Email*</label>
-											<input type="email" class="form-control" value="sjas1202@gmail.com" placeholder="Enter Email Address" required>
+											<input type="email" class="form-control" value="sjas1202@gmail.com" th:field="*{email}"  required>
 										</div>
 										<div class="form-group">
 											<label class="form-label">Phone*</label>
-											<input type="text" class="form-control" value="+918437176189" placeholder="Enter Phone Number" required>
+											<input type="text" class="form-control" value="+918437176189" th:field="*{phone}"  required>
 										</div>
-										<div class="form-group">
-											<label class="form-label">Customer Image*</label>
-											<div class="input-group">
-												<div class="custom-file">
-													<input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-													<label class="custom-file-label" for="inputGroupFile04">Choose Image</label>
-												</div>
-											</div>
-											<div class="add-customer-img">
-												<img src="images/avatar/img-1.jpg" alt="">
-											</div>
-										</div>
+
 										<div class="form-group">
 											<label class="form-label">Address*</label>
 											<div class="card card-editor">
 												<div class="content-editor">
-													<textarea class="text-control" value="Ludhiana, Punjab" placeholder="Enter Description"></textarea>
+													<textarea class="text-control" th:field="*{address}" required></textarea>
 												</div>
 											</div>
 										</div>
@@ -82,6 +72,7 @@
 										</div>
 									</div>
 								</div>
+							</form>
 							</div>
 						</div>
 					</div>
@@ -92,9 +83,9 @@
 	</div>
 
 	<!-- Javascripts -->
-	<script src="../js/jquery-3.4.1.min.js"></script>
-	<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="../js/scripts.js"></script>
+	<script src="../../js/jquery-3.4.1.min.js"></script>
+	<script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../../js/scripts.js"></script>
 
 </body>
 </html>

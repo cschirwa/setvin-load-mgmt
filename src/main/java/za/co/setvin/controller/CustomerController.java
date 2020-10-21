@@ -27,20 +27,20 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
-	
+
 	@Autowired
 	private CurrencyService currencyService;
-	
+
 	@Autowired
 	private CountryService countryService;
-	
+
 	@GetMapping("/customers")
 	public String showCustomers(Model model) {
 		List<Customer> customers = customerService.getAll();
 		model.addAttribute("customerList", customers);
 		return "customers";
 	}
-	
+
 	@GetMapping("/customer/add")
 	public String viewAddCustomer(Model model) {
 		List<Currency> currencies = currencyService.getAll();
@@ -50,21 +50,21 @@ public class CustomerController {
 		model.addAttribute("countryList", countries);
 		return "customer_add";
 	}
-	
+
 	@GetMapping("/customer/view/{customerId}")
 	public String viewCustomer(@PathVariable("customerId") Long id, Model model) {
 		Customer customer = customerService.findCustomer(id);
-		
-		if(customer!=null) {
+
+		if (customer != null) {
 			model.addAttribute("customer", customer);
 		}
 		return "customer_view";
 	}
-	
+
 	@GetMapping("/customer/edit/{customerId}")
 	public String editCustomer(@PathVariable("customerId") Long id, Model model) {
 		Customer customer = customerService.findCustomer(id);
-		if(customer!=null) {
+		if (customer != null) {
 			List<Currency> currencies = currencyService.getAll();
 			List<Country> countries = countryService.getAll();
 			model.addAttribute("currencyList", currencies);
@@ -75,11 +75,9 @@ public class CustomerController {
 	}
 
 	@PostMapping("/customer/add")
-	public String postAddCustomer(
-			@ModelAttribute Customer customer, 
-			BindingResult result,
+	public String postAddCustomer(@ModelAttribute Customer customer, BindingResult result,
 			RedirectAttributes attributes) {
-		if(!result.hasErrors()) {
+		if (!result.hasErrors()) {
 			customerService.add(customer);
 			attributes.addFlashAttribute("message", "Success");
 			attributes.addFlashAttribute("alertClass", "alert-success");
@@ -89,18 +87,12 @@ public class CustomerController {
 		attributes.addFlashAttribute("alertClass", "alert-danger");
 		return "customer_add";
 	}
-	
+
 	@PostMapping("customer/edit/{customerId}")
-	public String updateCustomer(
-			@PathVariable String customerId,
-			@ModelAttribute Customer customer, 
-			BindingResult result,
-			RedirectAttributes attributes) {
-		if(!result.hasErrors()) {
-			Customer dbCustomer = customerService.findCustomer(Long.parseLong(customerId));
-			if(dbCustomer!=null) {
-				customerService.amend(Long.parseLong(customerId), customer);
-			}
+	public String updateCustomer(@PathVariable String customerId, @ModelAttribute Customer customer,
+			BindingResult result, RedirectAttributes attributes) {
+		if (!result.hasErrors()) {
+			customerService.amend(Long.parseLong(customerId), customer);
 			attributes.addFlashAttribute("message", "Failed");
 			attributes.addFlashAttribute("alertClass", "alert-danger");
 			return "redirect:/customers";
@@ -109,8 +101,8 @@ public class CustomerController {
 		attributes.addFlashAttribute("alertClass", "alert-danger");
 		return "customer_edit";
 	}
-	
-	@RequestMapping(value = "/customer/delete/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
+
+	@RequestMapping(value = "/customer/delete/{id}", method = { RequestMethod.DELETE, RequestMethod.GET })
 	public String deleteCustomer(@PathVariable String id) {
 		customerService.delete(Long.parseLong(id));
 		System.out.println("Deleted");

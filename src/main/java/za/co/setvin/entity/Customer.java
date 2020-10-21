@@ -35,7 +35,6 @@ public class Customer extends AbstractEntity implements Serializable{
 	
 	@Column(name = "vat_number", nullable = true, unique = false)
 	@Pattern(regexp = "^(?:[4-5][0-9]{9}|)$")
-//	@Size(min = 10, max = 10, message = "{invalid.vatnumber}")
 	private String VatNumber;
 	
 	@Column(name = "enterprise_number", nullable = true, unique = false)
@@ -52,13 +51,11 @@ public class Customer extends AbstractEntity implements Serializable{
 	private String email;
 	
 	@Column(name = "phone", nullable = false)
-//	@Size(min = 9, max = 12, message = "{invalid.phonenumber}")
 	@Pattern(regexp = "^(?:[+0]{1}[0-9]{7,11}|)$")
 	private String phone;
 	
 	@Nullable
 	@Column(name = "phone2", nullable = true, unique = false)
-//	@Size(max = 12, message = "{invalid.phonenumber}")
 	@Pattern(regexp = "^(?:[+0]{1}[0-9]{7,11}|)$")
 	private String phone2;
 	

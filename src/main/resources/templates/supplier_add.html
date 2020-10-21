@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description-setvinlogistics" content="">
+	<meta name="author-setvin" content="">
+	<title>Load Management System</title>
+	<link href="../css/styles.css" rel="stylesheet">
+	<link href="../css/admin-style.css" rel="stylesheet">
+	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body class="sb-nav-fixed">
+	<div th:replace="fragments/topnav::topnavbar"></div>
+	<div id="layoutSidenav">
+		<div th:replace="fragments/sidenav::navbar"></div>
+		<div id="layoutSidenav_content">
+			<main>
+				<div class="container-fluid">
+					<h2 class="mt-30 page-title">Suppliers</h2>
+					<ol class="breadcrumb mb-30">
+						<li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
+						<li class="breadcrumb-item"><a th:href="@{/suppliers}">Suppliers</a></li>
+						<li class="breadcrumb-item active">Add Supplier</li>
+					</ol>
+					<div class="row">
+						<div class="col-lg-6 col-md-6">
+							<div class="card card-static-2 mb-30">
+								<div class="card-title-2">
+									<h4>Add Supplier</h4>
+								</div>
+							</div>
+							<div class="card-body-table">
+								<div class="news-content-right pd-20">
+									<form th:action="@{/supplier/add}" th:object="${supplier}" method="post" enctype="multipart/form-data">
+										<div class="row">
+											<div class="form-group col-md-6">
+												<label class="form-label">Supplier Name*</label>
+												<input type="text" class="form-control" placeholder="eg. Coca Cola" th:field="*{name}" required>
+											</div>
+											<div class="form-group col-md-3">
+												<label class="form-label">Enterprise Number</label>
+												<input type="text" class="form-control" placeholder="eg. 2010/111222/33" th:field="*{enterpriseNumber}"  pattern="^(?:[1-2][0-9]{3}[//]?[0-9]{6}[//]?[0-9]{2}|)$" minlength="14" maxlength="14" title="Invalid Enterprise Number">
+											</div>
+											<div class="form-group col-md-3">
+												<label class="form-label">VAT Number</label>
+												<input type="text" class="form-control"  placeholder="eg. 4111222333" th:field="*{vatNumber}" minlength="10" maxlength="10" title="Invalid VAT Number">
+											</div>
+										</div>
+										<div class="row">
+											<div class="form-group col-md-6">
+												<label class="form-label">Contact Person*</label>
+												<input type="text" class="form-control"  placeholder="eg. John Doe" th:field="*{contact}" required>
+											</div>
+
+											<div class="form-group col-md-6">
+												<label class="form-label">Contact Email*</label>
+												<input type="email" class="form-control"  placeholder="eg. john@cocacola.com" th:field="*{email}" required>
+											</div>
+										</div>
+										<div class="row">
+											<div class="form-group col-md-6">
+												<label class="form-label">Phone*</label>
+												<input type="text" class="form-control" placeholder="eg. +27 11 1112222" th:field="*{phone}" minlength="9" maxlength="12" pattern="^[+0]{1}[0-9]{7,11}" title="Invalid Phone Number" required>
+											</div>
+											<div class="form-group col-md-6">
+												<label class="form-label">Alternate Phone</label>
+												<input type="text" class="form-control" placeholder="eg. +27 11 1112223" th:field="*{phone2}" maxlength="12" pattern="^(?:[+0]{1}[0-9]{7,11}|)$" title="Invalid Phone Number">
+											</div>
+										</div>
+
+										<div class="form-group col-md-6">
+											<label class="form-label">Address*</label>
+											<div class="card card-editor">
+												<div class="content-editor">
+													<textarea class="text-control" placeholder="Enter Address" th:field="*{address}" required></textarea>
+												</div>
+											</div>
+										</div>
+										<div class="form-group col-md-6">
+											<label class="form-label">Country*</label>
+											<select type="text" class="form-control" placeholder="South Africa" th:field="*{country}" required>
+												<option value="" disabled>--Select Country--</option>
+												<option th:each="country : ${countryList}" th:value="${country.name}" th:text="${country.name}">South Africa</option>
+											</select>
+										</div>
+										<button class="save-btn hover-btn" type="submit">Save Supplier</button>
+										<div th:switch="${message}">
+											<div></div>
+											<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+			<div th:replace="fragments/footer::footer"></div>
+		</div>
+
+
+		<!-- Javascripts -->
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="js/scripts.js"></script>
+
+	</body>
+	</html>
