@@ -54,20 +54,19 @@ public class Load extends AbstractEntity implements Serializable{
 //	@JsonIgnoreProperties("load")
 //	private Map<String, String> containerMap;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Customer customer;
+	private String customer;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Truck truck;
+//	@ManyToOne(fetch = FetchType.EAGER)
+	private String truck;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Driver driver;
+//	@ManyToOne(fetch = FetchType.EAGER)
+	private String driver;
 	
 	@OneToMany
 	private List<Trailer> trailers;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Status status;
+//	@ManyToOne(fetch = FetchType.EAGER)
+	private String status;
 	
 	public Load() {
 		super();
@@ -100,11 +99,11 @@ public class Load extends AbstractEntity implements Serializable{
 			String entryBorder,
 			String freightStatement,
 //			Map<String, String> containerMap, 
-			Customer customer, 
-			Truck truck,
-			Driver driver,
+			String customer, 
+			String truck,
+			String driver,
 			List<Trailer> trailers,
-			Status status
+			String status
 			) {
 		super();
 		this.orderNumber = orderNumber;

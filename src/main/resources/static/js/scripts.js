@@ -39,3 +39,13 @@ $(document).keydown(function (event) {
 	}
 });
 
+$(document).ready(function(){
+
+  $('.table #delete-btn').on('click',function(event){
+    console.log("themeforest")
+    event.preventDefault();
+    var href = $(this).attr('href');
+    $('#deleteModal #delbtn').attr('href',href);
+    $('#deleteModal').modal();
+  });
+});

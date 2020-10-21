@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import za.co.setvin.entity.Country;
 import za.co.setvin.entity.Driver;
 import za.co.setvin.service.CountryService;
 import za.co.setvin.service.DriverService;
@@ -30,20 +30,20 @@ public class DriverController {
 		return "drivers";
 	}
 	
-	@GetMapping("/driver_view/{id}")
+	@GetMapping("/driver/view/{id}")
 	public String viewDriver(@PathVariable String id, Model model) {
 		model.addAttribute("driver", driverService.findById(Long.valueOf(id)));
 		return "driver_view";
 	}
 	
-	@GetMapping("/driver_add")
+	@GetMapping("/driver/add")
 	public String addDriver(Model model) {
 		model.addAttribute("driver", new Driver());
 		model.addAttribute("countryList", countryService.getAll());
 		return "driver_add";
 	}
 	
-	@PostMapping("/driver_add")
+	@PostMapping("/driver/add")
 	public String postAddDriver(@ModelAttribute Driver driver,
 			BindingResult result,
 			RedirectAttributes attributes) {
@@ -58,32 +58,34 @@ public class DriverController {
 		return "driver_add";
 	}
 	
-	@GetMapping("/driver_edit/{id}")
+	@GetMapping("/driver/edit/{id}")
 	public String viewEditDriver(@PathVariable String id, Model model) {
 		model.addAttribute("driver", driverService.findById(Long.valueOf(id)));
 		model.addAttribute("countryList", countryService.getAll());
 		return "driver_edit";
 	}
 	
-	@PostMapping("/driver_edit/{id}")
+	@PostMapping("/driver/edit/{id}")
 	public String postEditDriver(
 			@PathVariable String id,
 			@ModelAttribute Driver driver,
 			BindingResult result,
 			RedirectAttributes attributes) {
 		if(!result.hasErrors()) {
-			Driver dbDriver = driverService.findById(Long.parseLong(id));
-			if(dbDriver!=null) {
-				dbDriver = driver;
-				driverService.amend(Long.parseLong(id), driver);
-			}
+			driver.setId(Long.parseLong(id));
 			driverService.add(driver);
-			attributes.addFlashAttribute("message", "Failed");
-			attributes.addFlashAttribute("alertClass", "alert-danger");
+			attributes.addFlashAttribute("message", "Success");
+			attributes.addFlashAttribute("alertClass", "alert-success");
 			return "redirect:/drivers";
 		}
 		attributes.addFlashAttribute("message", "Failed");
 		attributes.addFlashAttribute("alertClass", "alert-danger");
 		return "driver_add";
+	}
+	
+	@RequestMapping("/driver/delete/{id}")
+	public String deleteDriver(@PathVariable String id) {
+		driverService.delete(Long.parseLong(id));
+		return "redirect:/drivers";
 	}
 }

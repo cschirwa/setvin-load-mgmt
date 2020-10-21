@@ -2,6 +2,7 @@ package za.co.setvin.bootstrap;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import za.co.setvin.entity.Customer;
 import za.co.setvin.entity.Driver;
 import za.co.setvin.entity.Load;
 import za.co.setvin.entity.Status;
+import za.co.setvin.entity.Supplier;
 import za.co.setvin.entity.Truck;
 import za.co.setvin.repository.CountryRepository;
 import za.co.setvin.service.CurrencyService;
@@ -21,6 +23,7 @@ import za.co.setvin.service.CustomerService;
 import za.co.setvin.service.DriverService;
 import za.co.setvin.service.LoadService;
 import za.co.setvin.service.StatusService;
+import za.co.setvin.service.SupplierService;
 import za.co.setvin.service.TruckService;
 
 @Component
@@ -40,6 +43,8 @@ public class Bootstrap {
 	
 	private TruckService truckService;
 	
+	private SupplierService supplierService;
+	
 	
 	@Autowired
 	public Bootstrap(CustomerService customerService, 
@@ -48,7 +53,8 @@ public class Bootstrap {
 			CountryRepository countryService,
 			StatusService statusService,
 			DriverService driverService,
-			TruckService truckService) {
+			TruckService truckService,
+			SupplierService supplierService) {
 		this.customerService = customerService;
 		this.loadService = loadService;
 		this.currencyService = currencyService;
@@ -56,6 +62,7 @@ public class Bootstrap {
 		this.statusService = statusService;
 		this.driverService = driverService;
 		this.truckService = truckService;
+		this.supplierService = supplierService;
 		loadStatuses();
 		loadCurrencies();
 		loadCountries();
@@ -63,6 +70,8 @@ public class Bootstrap {
 		loadTrucks();
 		loadDrivers();
 		loadTruckLoads();
+		loadSuppliers();
+		
 	}
 	
 	private void loadTrucks() {
@@ -100,6 +109,19 @@ public class Bootstrap {
 		customer.setAddress("7 The Algarve, Paulshof 2191");
 		customer.setBalance(new BigDecimal(50000));
 		customerService.add(customer);
+		
+		Customer customer2 = new Customer();
+		customer2.setName("Deferro");
+		customer2.setContactPerson("Deferro");
+		customer2.setEmail("calvin@deferro.com");
+		customer2.setCountry("Zimbabwe");
+		customer2.setDefaultCcy("ZAR");
+		customer2.setPhone("0876767676");
+		customer2.setVatNumber("4111444333");
+		customer2.setEnterpriseNumber("2010/123456/80");
+		customer2.setAddress("Mutare, 020");
+		customer2.setBalance(new BigDecimal(89000));
+		customerService.add(customer2);
 	}
 	
 	private void loadDrivers() {
@@ -121,7 +143,7 @@ public class Bootstrap {
 	
 	private void loadTruckLoads() {
 		Load load = Load.builder()
-				.customer(customerService.findCustomer(1L))
+				.customer(customerService.findCustomer(1L).getName())
 				.orderNumber("12345")
 				.description("Load to Durban - Manganese 30MT")
 				.instructions("Load by 8am, offload by 3pm")
@@ -138,9 +160,9 @@ public class Bootstrap {
 				.totalAmount(new BigDecimal(34000))
 				.chargeVat(true)
 				.currency("ZAR")
-				.status(statusService.findByName("IN_TRANSIT"))
-				.driver(driverService.findByFirstName("Kuziwa"))
-				.truck(truckService.findByRegistration("FB00HL-GP"))
+				.status(statusService.findByName("IN_TRANSIT").getNarration())
+				.driver(driverService.findByFirstName("Kuziwa").getFirstname() + " " + driverService.findByFirstName("Kuziwa").getLastname())
+				.truck(truckService.findByRegistration("FB00HL-GP").getRegistration())
 				.build();
 		loadService.add(load);
 	}
@@ -165,6 +187,28 @@ public class Bootstrap {
 				new Country("ZW", "Zimbabwe", currencyService.findByIsoCode("USD"))
 				);
 		countries.forEach(country -> countryService.save(country));
+	}
+	
+	private void loadSuppliers() {
+		Supplier supp = new Supplier();
+		supp.setName("Cartwright");
+		supp.setCreated(LocalDateTime.now());
+		supp.setInvoiceDate(LocalDate.now());
+		supp.setInvoiceNumber("INV123456");
+		supp.setPhone("087878787877");
+		supp.setEmail("c@cartwright.com");
+		supp.setContact("Rickie Fowler");
+		supplierService.add(supp);
+		
+		Supplier supp2 = new Supplier();
+		supp2.setName("Estado Natural");
+		supp2.setCreated(LocalDateTime.now());
+		supp2.setInvoiceDate(LocalDate.now());
+		supp2.setInvoiceNumber("INV999");
+		supp2.setPhone("0334455877");
+		supp2.setEmail("s@estu.com");
+		supp2.setContact("James Brown");
+		supplierService.add(supp2);
 	}
 
 }

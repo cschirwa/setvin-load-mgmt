@@ -28,7 +28,7 @@
 					</ol>
 					<div class="row justify-content-between">
 						<div class="col-lg-12">
-							<a th:href="@{/product_add}" class="add-btn hover-btn">Add New</a>
+							<a th:href="@{/truck/add}" class="add-btn hover-btn">Add New</a>
 						</div>
 						<div class="col-lg-3 col-md-4">
 							<div class="bulk-section mt-30">
@@ -93,8 +93,8 @@
 													<td th:text="${truck.driver}">Driver</td>
 													<td th:text="${#temporals.format(truck.licenseDiscExpiry, 'dd MMM yyyy')}">Disc Expiry</td>
 													<td class="action-btns">
-														<a th:href="@{/truck_view/{id}(id=${truck.id})}" class="view-shop-btn" title="View"><i class="fas fa-eye"></i></a>
-														<a th:href="@{/truck_edit/{id}(id=${truck.id})}" class="edit-btn" title="Edit"><i class="fas fa-edit"></i></a>
+														<a th:href="@{/truck/view/{id}(id=${truck.id})}" class="view-shop-btn" title="View"><i class="fas fa-eye"></i></a>
+														<a th:href="@{/truck/edit/{id}(id=${truck.id})}" class="edit-btn" title="Edit"><i class="fas fa-edit"></i></a>
 													</td>
 												</tr>
 											</tbody>
@@ -109,6 +109,7 @@
 			<div th:replace="fragments/footer::footer"></div>
 		</div>
 	</div>
+
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="js/scripts.js"></script>

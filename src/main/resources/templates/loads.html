@@ -27,7 +27,7 @@
 					<ol class="breadcrumb mb-30">
 						<li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
 						<li class="breadcrumb-item active">Loads</li>
-						<a th:href="@{/load_add}" class="add-btn hover-btn ml-auto mr-md-0">Add New Load</a>
+						<a th:href="@{/load/add}" class="add-btn hover-btn ml-auto mr-md-0">Add New Load</a>
 					</ol>
 					<div class="row justify-content-between">
 						<!-- <div class="col-lg-3 col-md-4">
@@ -87,20 +87,20 @@
 												<tr>
 													<!-- <td><input type="checkbox" class="check-item" name="ids[]" value="11"></td> -->
 													<td th:text="${load.id}">1</td>
-													<td th:text="${load.customer?.name}">customer</td>
-													<td th:text="${load?.driver?.nickname}">driver nickname</td>
-													<td th:text="${load?.truck?.registration}">truck</td>
+													<td th:text="${load.customer}">customer</td>
+													<td th:text="${load.driver}">driver nickname</td>
+													<td th:text="${load.truck}">truck</td>
 													<td th:text="${load.orderNumber}">Order Number</td>
 													<td th:text="${#temporals.format(load.loadDate, 'dd MMM yyyy')}">Load Date</td>
 													<td th:text="${#temporals.format(load.deliveryDate, 'dd MMM yyyy')}">Delivery Date</td>
 													<td th:text="${load.fromSuburb + ', ' + load.fromCountry}">From</td>
 													<td th:text="${load.toSuburb + ', ' + load.toCountry}">To</td>
-													<td th:text="${load.status?.narration}"><span class="badge-item badge-status">Active</span></td>
-													<td th:text="${load.customer?.defaultCcy}" class="text-right">Currency</td>
+													<td th:text="${load.status}"><span class="badge-item badge-status">Active</span></td>
+													<td th:text="${load.currency}" class="text-right">Currency</td> 
 													<td th:text="${#numbers.formatDecimal(load.totalAmount, 0, 'DEFAULT', 2, 'POINT')}" class="money-right">Invoice Value</td>
 													<td class="action-btns">
-														<a th:href="@{/load_view/{id} (id=${load.id})}" class="view-shop-btn"><i class="fas fa-eye"></i> View</a>
-														<a th:href="@{/load_edit/{id} (id=${load.id})}" class="edit-btn"><i class="fas fa-edit"></i> Edit</a>
+														<a th:href="@{/load/view/{id} (id=${load.id})}" class="view-shop-btn"><i class="fas fa-eye"></i> View</a>
+														<a th:href="@{/load/edit/{id} (id=${load.id})}" class="edit-btn"><i class="fas fa-edit"></i> Edit</a>
 													</td>
 												</tr>
 											</tbody>

@@ -27,7 +27,7 @@
 					<ol class="breadcrumb mb-30">
 						<li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
 						<li class="breadcrumb-item active">Customers</li>
-						<a th:href="@{/customer_add}" class="add-btn hover-btn ml-auto mr-md-0">Add New</a>
+						<a th:href="@{/customer/add}" class="add-btn hover-btn ml-auto mr-md-0">Add New</a>
 					</ol>
 					<div class="row">
 						<div class="col-lg-12 col-md-12">
@@ -70,10 +70,11 @@
 													<td th:text="${customer.phone2}">+27111222333</td>
 													<td th:text="${customer.defaultCcy}">ZAR</td>
 													<td th:text="${customer.balance}">50000</td>
+													<td th:text="${customer.country}">ZIM</td>
 													<td class="action-btns">
-														<a th:href="@{/customer_view/{id}(id=${customer.id})}" class="view-shop-btn" title="View"><i class="fas fa-eye"></i></a>
-														<a th:href="@{/customer_edit/{id}(id=${customer.id})}" class="edit-btn" title="Edit"><i class="fas fa-edit"></i></a>
-														<a href="@{/customer_delete/{id}(id=${customer.id})}" class="delete-btn" title="Edit"><i class="fas fa-trash-alt"></i></a>
+														<a th:href="@{/customer/view/{id}(id=${customer.id})}" class="view-shop-btn" title="View"><i class="fas fa-eye"></i></a>
+														<a th:href="@{/customer/edit/{id}(id=${customer.id})}" class="edit-btn" title="Edit"><i class="fas fa-edit"></i></a>
+														<a th:href="@{/customer/delete/{id}(id=${customer.id})}" id="delete-btn" class="delete-btn" title="Delete"><i class="fas fa-trash-alt"></i></a>
 													</td>
 												</tr>
 											</tbody>
@@ -88,6 +89,33 @@
 			<div th:replace="fragments/footer::footer"></div>
 		</div>
 	</div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">
+  Launch delete modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="status-btn hover-btn" data-dismiss="modal">Cancel</button>
+        <a href="" id="delbtn" class="btn">Yes, delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="js/scripts.js"></script>

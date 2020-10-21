@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import za.co.setvin.entity.Country;
@@ -38,7 +41,7 @@ public class CustomerController {
 		return "customers";
 	}
 	
-	@GetMapping("/customer_add")
+	@GetMapping("/customer/add")
 	public String viewAddCustomer(Model model) {
 		List<Currency> currencies = currencyService.getAll();
 		List<Country> countries = countryService.getAll();
@@ -48,7 +51,7 @@ public class CustomerController {
 		return "customer_add";
 	}
 	
-	@GetMapping("/customer_view/{customerId}")
+	@GetMapping("/customer/view/{customerId}")
 	public String viewCustomer(@PathVariable("customerId") Long id, Model model) {
 		Customer customer = customerService.findCustomer(id);
 		
@@ -58,7 +61,7 @@ public class CustomerController {
 		return "customer_view";
 	}
 	
-	@GetMapping("/customer_edit/{customerId}")
+	@GetMapping("/customer/edit/{customerId}")
 	public String editCustomer(@PathVariable("customerId") Long id, Model model) {
 		Customer customer = customerService.findCustomer(id);
 		if(customer!=null) {
@@ -71,7 +74,7 @@ public class CustomerController {
 		return "customer_edit";
 	}
 
-	@PostMapping("/customer_add")
+	@PostMapping("/customer/add")
 	public String postAddCustomer(
 			@ModelAttribute Customer customer, 
 			BindingResult result,
@@ -80,14 +83,14 @@ public class CustomerController {
 			customerService.add(customer);
 			attributes.addFlashAttribute("message", "Success");
 			attributes.addFlashAttribute("alertClass", "alert-success");
-			return "redirect:customers";
+			return "redirect:/customers";
 		}
 		attributes.addFlashAttribute("message", "Failed");
 		attributes.addFlashAttribute("alertClass", "alert-danger");
 		return "customer_add";
 	}
 	
-	@PostMapping("customer_edit/{customerId}")
+	@PostMapping("customer/edit/{customerId}")
 	public String updateCustomer(
 			@PathVariable String customerId,
 			@ModelAttribute Customer customer, 
@@ -105,5 +108,12 @@ public class CustomerController {
 		attributes.addFlashAttribute("message", "Failed");
 		attributes.addFlashAttribute("alertClass", "alert-danger");
 		return "customer_edit";
+	}
+	
+	@RequestMapping(value = "/customer/delete/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
+	public String deleteCustomer(@PathVariable String id) {
+		customerService.delete(Long.parseLong(id));
+		System.out.println("Deleted");
+		return "redirect:/customers";
 	}
 }

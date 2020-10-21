@@ -7,12 +7,12 @@
 	<meta name="description-setvinlogistics" content="">
 	<meta name="author-setvin" content="">
 	<title>Load Management System</title>
-	<link href="../css/styles.css" rel="stylesheet">
-	<link href="../css/admin-style.css" rel="stylesheet">
+	<link href="../../css/styles.css" rel="stylesheet">
+	<link href="../../css/admin-style.css" rel="stylesheet">
 
 	<!-- Vendor Stylesheets -->
-	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+	<link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 
 </head>
 
@@ -26,7 +26,7 @@
 					<h2 class="mt-30 page-title">View Load</h2>
 					<ol class="breadcrumb mb-30">
 						<li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
-						<li class="breadcrumb-item"><a th:href="@{/customers}">Loads</a></li>
+						<li class="breadcrumb-item"><a th:href="@{/loads}">Loads</a></li>
 						<li class="breadcrumb-item active">Load View</li>
 					</ol>
 					<div class="row">
@@ -37,10 +37,10 @@
 										<div class="shop_img">
 											<img src="images/shop.svg" alt="">
 										</div>
-										<div class="shop-dt-left">
-											<h4 th:text="${load.customer?.name}">Customer Name</h4>
-											<span th:text="${load.customer?.address}">Address</span>
-											<br><span th:text="${load.customer?.country}">Country</span></br>
+										<div class="shop-dt-left" th:object="${customer}">
+											<h4 th:text="${customer?.name}">Customer Name</h4>
+											<span th:text="${customer?.address}">Address</span>
+											<br><span th:text="${customer?.country}">Country</span></br>
 										</div>
 									</div>
 								</div>
@@ -159,9 +159,9 @@
 	</div>
 
 	<!-- Javascripts -->
-	<script src="js/jquery-3.4.1.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="js/scripts.js"></script>
+	<script src="../../js/jquery-3.4.1.min.js"></script>
+	<script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../../js/scripts.js"></script>
 
 </body>
 </html>

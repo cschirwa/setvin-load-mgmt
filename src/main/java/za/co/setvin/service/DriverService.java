@@ -55,5 +55,9 @@ public class DriverService {
 		return driverRepository.save(driver);
 		
 	}
+	
+	public void delete(Long id) {
+		driverRepository.deleteById(id);
+	}
 
 }

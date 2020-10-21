@@ -35,14 +35,14 @@ public class TruckController {
 		return "trucks";
 	}
 	
-	@GetMapping("/truck_add")
+	@GetMapping("/truck/add")
 	public String addTruck(Model model) {
 		model.addAttribute("truck", new Truck());
 		model.addAttribute("driverList", driverService.getAll());
 		return "truck_add";
 	}
 	
-	@GetMapping("/truck_edit/{truckId}")
+	@GetMapping("/truck/edit/{truckId}")
 	public String viewEditTruck(@PathVariable("truckId") String truckId, Model model) {
 		Truck truck = truckService.findById(Long.parseLong(truckId));
 		model.addAttribute("truck", truck);
@@ -50,14 +50,14 @@ public class TruckController {
 		return "truck_edit";
 	}
 	
-	@GetMapping("/truck_view/{truckId}")
+	@GetMapping("/truck/view/{truckId}")
 	public String viewTruck(@PathVariable("truckId") String truckId, Model model) {
 		Truck truck = truckService.findById(Long.parseLong(truckId));
 		model.addAttribute("truck", truck);
 		return "truck_view";
 	}
 	
-	@PostMapping("/truck_add")
+	@PostMapping("/truck/add")
 	public String postAddTruck(@ModelAttribute Truck truck,
 			BindingResult result, 
 			RedirectAttributes attributes) {
@@ -75,7 +75,7 @@ public class TruckController {
 	}
 	
 	
-	@PostMapping("/truck_edit/{truckId}")
+	@PostMapping("/truck/edit/{truckId}")
 	public String postEditTruck(@PathVariable String truckId,
 			@ModelAttribute Truck truck,
 			BindingResult result, 

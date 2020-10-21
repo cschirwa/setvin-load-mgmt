@@ -24,9 +24,11 @@ public class Supplier extends AbstractEntity implements Serializable {
 	
 	private String contact;
 	
+	private String email;
+	
 	private String phone;
 	
-	private Long invoiceNumber;
+	private String invoiceNumber;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate invoiceDate;

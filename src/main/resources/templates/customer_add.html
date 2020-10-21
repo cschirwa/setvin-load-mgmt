@@ -9,8 +9,8 @@
 	<title>Load Management System</title>
 	<link href="../css/styles.css" rel="stylesheet">
 	<link href="../css/admin-style.css" rel="stylesheet">
-	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 
 </head>
 
@@ -36,7 +36,7 @@
 							</div>
 							<div class="card-body-table">
 								<div class="news-content-right pd-20">
-									<form th:action="@{/customer_add}" th:object="${customer}" method="post" enctype="multipart/form-data">
+									<form th:action="@{/customer/add}" th:object="${customer}" method="post" enctype="multipart/form-data">
 										<div class="row">
 											<div class="form-group col-md-6">
 												<label class="form-label">Customer Name*</label>

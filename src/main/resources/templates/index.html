@@ -192,8 +192,8 @@
 												</td>
 												<td th:text="${order.orderTotal}">$90</td>
 												<td class="action-btns">
-													<a th:href="@{/order_view/{id}(id=${order.id})}" class="views-btn"><i class="fas fa-eye"></i></a>
-													<a th:href="@{/order_edit/{id}(id=${order.id})}" class="edit-btn"><i class="fas fa-edit"></i></a>
+													<a th:href="@{/order/view/{id}(id=${order.id})}" class="views-btn"><i class="fas fa-eye"></i></a>
+													<a th:href="@{/order/edit/{id}(id=${order.id})}" class="edit-btn"><i class="fas fa-edit"></i></a>
 												</td>
 											</tr>
 										</tbody>

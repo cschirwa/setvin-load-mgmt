@@ -7,12 +7,12 @@
 	<meta name="description-setvinlogistics" content="">
 	<meta name="author-setvin" content="">
 	<title>Load Management System</title>
-	<link href="../css/styles.css" rel="stylesheet">
-	<link href="../css/admin-style.css" rel="stylesheet">
+	<link href="../../css/styles.css" rel="stylesheet">
+	<link href="../../css/admin-style.css" rel="stylesheet">
 
 	<!-- Vendor Stylesheets -->
-	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+	<link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 
 </head>
 
@@ -23,56 +23,37 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid">
-					<h2 class="mt-30 page-title">Customers</h2>
+					<h2 class="mt-30 page-title">suppliers</h2>
 					<ol class="breadcrumb mb-30">
 						<li class="breadcrumb-item"><a th:href="@{/dashboard}">Dashboard</a></li>
-						<li class="breadcrumb-item"><a th:href="@{/customers}">Customers</a></li>
-						<li class="breadcrumb-item active">Customer View</li>
+						<li class="breadcrumb-item"><a th:href="@{/suppliers}">suppliers</a></li>
+						<li class="breadcrumb-item active">supplier View</li>
 					</ol>
 					<div class="row">
 						<div class="col-lg-5 col-md-6">
 							<div class="card card-static-2 mb-30">
 								<div class="card-body-table">
-									<div class="shopowner-content-left text-center pd-20" th:object="${customer}">
-										<div class="customer_img">
-											<img th:src="@{../../images/customer/cus-{id}-1.jpg (id=${customer.id})}" alt="">
-										</div>
+									<div class="shopowner-content-left text-center pd-20" th:object="${supplier}">
 										<div class="shopowner-dt-left mt-4">
-											<h4 th:text="${customer.firstname + ' ' + customer.lastname}">Joginder Singh</h4>
-											<span>Customer</span>
+											<h4 th:text="${supplier.name}">Joginder Singh</h4>
+											<span>Supplier Details</span>
 										</div>
-										<ul class="product-dt-purchases">
-											<li>
-												<div class="product-status">
-													Purchased <span class="badge-item-2 badge-status">15</span>
-												</div>
-											</li>
-											<li>
-												<div class="product-status">
-													Rewards <span class="badge-item-2 badge-status">5</span>
-												</div>
-											</li>
-										</ul>
 										<div class="shopowner-dts">
 											<div class="shopowner-dt-list">
 												<span class="left-dt">Name</span>
-												<span class="right-dt" th:text="${customer.firstname + ' ' + customer.lastname}">Joginder Singh</span>
+												<span class="right-dt" th:text="${supplier.name}">Joginder Singh</span>
 											</div>
 											<div class="shopowner-dt-list">
-												<span class="left-dt">Username</span>
-												<span class="right-dt" th:text="${customer.username}">joginder</span>
+												<span class="left-dt">Contact</span>
+												<span class="right-dt" th:text="${supplier.contact}">joginder</span>
 											</div>
 											<div class="shopowner-dt-list">
 												<span class="left-dt">Email</span>
-												<span class="right-dt" th:text="${customer.email}">sjas1202@gmail.com</span>
+												<span class="right-dt" th:text="${supplier.email}">sjas1202@gmail.com</span>
 											</div>
 											<div class="shopowner-dt-list">
 												<span class="left-dt">Phone</span>
-												<span class="right-dt" th:text="${customer.phone}">+918437176189</span>
-											</div>
-											<div class="shopowner-dt-list">
-												<span class="left-dt">Address</span>
-												<span class="right-dt" th:text="${customer.location}">Ludhiana, Punjab</span>
+												<span class="right-dt" th:text="${supplier.phone}">+918437176189</span>
 											</div>
 										</div>
 									</div>
@@ -87,9 +68,9 @@
 	</div>
 
 	<!-- Javascripts -->
-	<script src="../js/jquery-3.4.1.min.js"></script>
-	<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="../js/scripts.js"></script>
+	<script src="../../js/jquery-3.4.1.min.js"></script>
+	<script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../../js/scripts.js"></script>
 
 </body>
 </html>

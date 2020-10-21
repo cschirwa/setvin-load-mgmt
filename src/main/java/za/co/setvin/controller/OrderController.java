@@ -11,17 +11,17 @@ public class OrderController {
 		return "loads";
 	}
 	
-	@GetMapping("order_add")
+	@GetMapping("/order/add")
 	public String addOrder() {
 		return "order_add";
 	}
 	
-	@GetMapping("order_view")
+	@GetMapping("/order/view")
 	public String viewOrder() {
 		return "order_view";
 	}
 	
-	@GetMapping("order_edit")
+	@GetMapping("/order/edit")
 	public String editOrder() {
 		return "order_edit";
 	}

@@ -37,7 +37,7 @@
 									<span class="order-id" th:text="${order.id}">Order #ORDR-123456</span>
 								</div>
 								<div class="invoice-content">
-									<form th:action="@{/order_edit}" th:object="${order}" method="post" enctype="multipart/form-data">
+									<form th:action="@{/order/edit}" th:object="${order}" method="post" enctype="multipart/form-data">
 									<div class="row">
 										<div class="col-lg-6 col-sm-6">
 											<div class="ordr-date" th:text="${#temporals.format(order.orderDate,'dd/MM/yyyy')}">

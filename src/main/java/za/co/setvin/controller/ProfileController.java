@@ -9,17 +9,17 @@ public class ProfileController {
 		return "profile";
 	}
 	
-	@GetMapping("profile_add")
+	@GetMapping("/profile_add")
 	public String addProfile() {
 		return "profile_add";
 	}
 	
-	@GetMapping("profile_view")
+	@GetMapping("/profile_view")
 	public String viewProfile() {
 		return "profile_view";
 	}
 	
-	@GetMapping("change_password")
+	@GetMapping("/change_password")
 	public String vieChangeProfile() {
 		return "change_password";
 	}

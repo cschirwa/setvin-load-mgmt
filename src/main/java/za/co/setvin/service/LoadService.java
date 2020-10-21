@@ -74,7 +74,7 @@ public class LoadService {
 	
 	public BigDecimal getVat(final Load load) {
 		BigDecimal vat = new BigDecimal(0);
-		if(load!=null && load.getCustomer()!=null && !load.getCustomer().getVatNumber().isEmpty()) {
+		if(load!=null && load.getCustomer()!=null && !load.getCustomer().isEmpty()) {
 			vat = getSubTotal(load).multiply(new BigDecimal(VAT_RATE));
 		}
 		return vat;

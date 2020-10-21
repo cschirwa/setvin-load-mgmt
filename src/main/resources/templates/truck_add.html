@@ -7,10 +7,10 @@
 	<meta name="description-setvinlogistics" content="">
 	<meta name="author-setvin" content="">
 	<title>Load Management System</title>
-	<link href="css/styles.css" rel="stylesheet">
-	<link href="css/admin-style.css" rel="stylesheet">
-	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+	<link href="../css/styles.css" rel="stylesheet">
+	<link href="../css/admin-style.css" rel="stylesheet">
+	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
 
@@ -35,7 +35,7 @@
 								<div class="card-title-2">
 									<h4>Add New Truck</h4>
 								</div>
-								<form th:action="@{/truck_add}" th:object="${truck}" method="post" enctype="multipart/form-data">
+								<form th:action="@{/truck/add}" th:object="${truck}" method="post" enctype="multipart/form-data">
 									<div class="card-body-table">
 										<div class="news-content-right pd-20">
 											<div class="form-group">
@@ -105,9 +105,9 @@
 		</div>
 
 		<!-- Javascripts -->
-		<script src="js/jquery-3.4.1.min.js"></script>
-		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="js/scripts.js"></script>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="../js/scripts.js"></script>
 
 	</body>
 	</html>

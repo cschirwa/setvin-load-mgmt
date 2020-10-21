@@ -7,15 +7,15 @@
 	<meta name="description-setvinlogistics" content="">
 	<meta name="author-setvin" content="">
 	<title>Load Management System</title>
-	<link href="css/styles.css" rel="stylesheet">
-	<link href="css/admin-style.css" rel="stylesheet">
+	<link href="../../css/styles.css" rel="stylesheet">
+	<link href="../../css/admin-style.css" rel="stylesheet">
 
 	<!-- Vendor Stylesheets -->
-	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+	<link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 
 	<!-- Tail Select Stylesheets -->
-	<link href="vendor/tail.select/css/bootstrap4/tail.select-default.css" rel="stylesheet">
+	<link href="../../vendor/tail.select/css/bootstrap4/tail.select-default.css" rel="stylesheet">
 </head>
 
 <body class="sb-nav-fixed">
@@ -40,7 +40,7 @@
 							</div>
 							<div class="card-body-table">
 								<div class="news-content-right pd-20">
-									<form th:action="@{/driver_add/}" th:object="${driver}" method="post" enctype="multipart/form-data">
+									<form th:action="@{/driver/add/}" th:object="${driver}" method="post" enctype="multipart/form-data">
 										<div class="row">
 											<div class="form-group col-md-4">
 												<label class="form-label">Firstname*</label>
@@ -109,10 +109,10 @@
 	</div>
 
 	<!-- Javascripts -->
-	<script src="js/jquery-3.4.1.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="vendor/tail.select/js/tail.select-full.min.js"></script>
-	<script src="js/scripts.js"></script>
+	<script src="../../js/jquery-3.4.1.min.js"></script>
+	<script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../../vendor/tail.select/js/tail.select-full.min.js"></script>
+	<script src="../../js/scripts.js"></script>
 	<script>
 	tail.select(".select");
 	</script>
