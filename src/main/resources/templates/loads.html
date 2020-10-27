@@ -96,7 +96,7 @@
 													<td th:text="${load.fromSuburb + ', ' + load.fromCountry}">From</td>
 													<td th:text="${load.toSuburb + ', ' + load.toCountry}">To</td>
 													<td th:text="${load.status}"><span class="badge-item badge-status">Active</span></td>
-													<td th:text="${load.currency}" class="text-right">Currency</td> 
+													<td th:text="${load.currency}" class="text-right">Currency</td>
 													<td th:text="${#numbers.formatDecimal(load.totalAmount, 0, 'DEFAULT', 2, 'POINT')}" class="money-right">Invoice Value</td>
 													<td class="action-btns">
 														<a th:href="@{/load/view/{id} (id=${load.id})}" class="view-shop-btn"><i class="fas fa-eye"></i> View</a>
@@ -119,5 +119,7 @@
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="js/scripts.js"></script>
 
+	<script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+	<script>paypal.Buttons().render('body');</script>
 </body>
 </html>
