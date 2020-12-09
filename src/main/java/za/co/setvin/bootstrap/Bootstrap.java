@@ -6,25 +6,14 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
+import com.google.common.collect.Sets;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import za.co.setvin.entity.Country;
-import za.co.setvin.entity.Currency;
-import za.co.setvin.entity.Customer;
-import za.co.setvin.entity.Driver;
-import za.co.setvin.entity.Load;
-import za.co.setvin.entity.Status;
-import za.co.setvin.entity.Supplier;
-import za.co.setvin.entity.Truck;
+import za.co.setvin.entity.*;
 import za.co.setvin.repository.CountryRepository;
-import za.co.setvin.service.CurrencyService;
-import za.co.setvin.service.CustomerService;
-import za.co.setvin.service.DriverService;
-import za.co.setvin.service.LoadService;
-import za.co.setvin.service.StatusService;
-import za.co.setvin.service.SupplierService;
-import za.co.setvin.service.TruckService;
+import za.co.setvin.service.*;
 
 @Component
 public class Bootstrap {
@@ -44,7 +33,9 @@ public class Bootstrap {
 	private TruckService truckService;
 	
 	private SupplierService supplierService;
-	
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
 	public Bootstrap(CustomerService customerService, 
@@ -71,7 +62,6 @@ public class Bootstrap {
 		loadDrivers();
 		loadTruckLoads();
 		loadSuppliers();
-		
 	}
 	
 	private void loadTrucks() {

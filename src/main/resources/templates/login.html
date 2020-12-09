@@ -28,23 +28,23 @@
 									<h3 class="text-center font-weight-light my-4">Login</h3>
 								</div>
 								<div class="card-body"><!--th:classappend="${classActiveLogin}? 'in active'" -->
-									<form th:action="@{/login}" th:object="${user}" method="post" enctype="multipart/form-data">
+									<form th:action="@{/login}" method="post" enctype="multipart/form-data">
 										<div class="form-group">
 											<label class="form-label" for="username">Username*</label>
-											<input class="form-control py-3" id="username" type="text" placeholder="Enter username" required>
+											<input class="form-control py-3" name="username" type="text" placeholder="Enter username" required>
 										</div>
 										<div class="form-group">
 											<label class="form-label" for="inputPassword">Password*</label>
-											<input class="form-control py-3" id="inputPassword" type="password" placeholder="Enter password" required>
+											<input class="form-control py-3" name="password" type="password" placeholder="Enter password" required>
 										</div>
 										<div class="form-group">
 											<div class="custom-control custom-checkbox">
-												<input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" required/>
+												<input class="custom-control-input" id="rememberPasswordCheck" type="checkbox"/>
 												<label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>
 											</div>
 										</div>
 										<div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-											<a class="btn btn-sign hover-btn" th:href="@{/index}">Login</a>
+											<button class="btn btn-sign hover-btn" type="submit">Login</button>
 										</div>
 									</form>
 								</div>

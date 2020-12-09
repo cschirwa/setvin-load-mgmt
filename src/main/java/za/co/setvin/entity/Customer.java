@@ -69,10 +69,10 @@ public class Customer extends AbstractEntity implements Serializable{
 	
 	private BigDecimal balance = new BigDecimal(0);
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.DETACH)
-	private Set<Receipt> receipts = new HashSet<>();
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL)
-	private Set<Load> loads = new HashSet<>();
+//	@OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.DETACH)
+//	private Set<Receipt> receipts = new HashSet<>();
+//	
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL)
+//	private Set<Load> loads = new HashSet<>();
 
 }
