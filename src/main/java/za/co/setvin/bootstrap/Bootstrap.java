@@ -6,14 +6,28 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
-import com.google.common.collect.Sets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import za.co.setvin.entity.*;
+import za.co.setvin.entity.Country;
+import za.co.setvin.entity.Currency;
+import za.co.setvin.entity.Customer;
+import za.co.setvin.entity.Driver;
+import za.co.setvin.entity.Load;
+import za.co.setvin.entity.Status;
+import za.co.setvin.entity.Supplier;
+import za.co.setvin.entity.Truck;
+import za.co.setvin.entity.User;
 import za.co.setvin.repository.CountryRepository;
-import za.co.setvin.service.*;
+import za.co.setvin.repository.UserRepository;
+import za.co.setvin.service.CurrencyService;
+import za.co.setvin.service.CustomerService;
+import za.co.setvin.service.DriverService;
+import za.co.setvin.service.LoadService;
+import za.co.setvin.service.StatusService;
+import za.co.setvin.service.SupplierService;
+import za.co.setvin.service.TruckService;
 
 @Component
 public class Bootstrap {
@@ -33,19 +47,17 @@ public class Bootstrap {
 	private TruckService truckService;
 	
 	private SupplierService supplierService;
+	
+	private UserRepository userRepository;
+	
+	private PasswordEncoder passwordEncoder;
 
 	@Autowired
-	private PasswordEncoder passwordEncoder;
-	
-	@Autowired
-	public Bootstrap(CustomerService customerService, 
-			LoadService loadService, 
-			CurrencyService currencyService,
-			CountryRepository countryService,
-			StatusService statusService,
-			DriverService driverService,
-			TruckService truckService,
-			SupplierService supplierService) {
+	public Bootstrap(CustomerService customerService, LoadService loadService, CurrencyService currencyService,
+			CountryRepository countryService, StatusService statusService, DriverService driverService,
+			TruckService truckService, SupplierService supplierService, UserRepository userRepository,
+			PasswordEncoder passwordEncoder) {
+		super();
 		this.customerService = customerService;
 		this.loadService = loadService;
 		this.currencyService = currencyService;
@@ -54,6 +66,8 @@ public class Bootstrap {
 		this.driverService = driverService;
 		this.truckService = truckService;
 		this.supplierService = supplierService;
+		this.userRepository = userRepository;
+		this.passwordEncoder = passwordEncoder;
 		loadStatuses();
 		loadCurrencies();
 		loadCountries();
@@ -62,6 +76,7 @@ public class Bootstrap {
 		loadDrivers();
 		loadTruckLoads();
 		loadSuppliers();
+		loadUser();
 	}
 	
 	private void loadTrucks() {
@@ -197,6 +212,11 @@ public class Bootstrap {
 		supp2.setEmail("s@estu.com");
 		supp2.setContact("James Brown");
 		supplierService.add(supp2);
+	}
+	
+	private void loadUser() {
+		User calvin = new User("calvin", passwordEncoder.encode("123123"));
+		userRepository.save(calvin);
 	}
 
 }

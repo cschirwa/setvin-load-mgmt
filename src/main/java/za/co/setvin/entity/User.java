@@ -1,26 +1,19 @@
 package za.co.setvin.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
-import lombok.AllArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity(name = "user")
 public class User extends AbstractEntity implements Serializable {
 	
@@ -39,7 +32,6 @@ public class User extends AbstractEntity implements Serializable {
 	private String username;
 	
 	@Column(name = "password", nullable = false)
-	@Size(min = 6, max = 15, message = "Password must be between 6 and 15 characters")
 	private String password;
 	
 	@Column(name = "email", unique = true)
@@ -58,5 +50,13 @@ public class User extends AbstractEntity implements Serializable {
 	@Size(min = 6, max = 35, message = "Location must be between 6 and 35 characters")
 	private String location;
 
+	private boolean active;
+	private int loginAttempts;
+	
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+		this.active = true;
+	}
 
 }
