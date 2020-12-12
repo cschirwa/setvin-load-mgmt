@@ -42,9 +42,9 @@ public class TruckController {
 		return "truck_add";
 	}
 	
-	@GetMapping("/truck/edit/{truckId}")
-	public String viewEditTruck(@PathVariable("truckId") String truckId, Model model) {
-		Truck truck = truckService.findById(Long.parseLong(truckId));
+	@GetMapping("/truck/edit/{id}")
+	public String viewEditTruck(@PathVariable("id") String id, Model model) {
+		Truck truck = truckService.findById(Long.parseLong(id));
 		model.addAttribute("truck", truck);
 		model.addAttribute("driverList", driverService.getAll());
 		return "truck_edit";
@@ -75,13 +75,13 @@ public class TruckController {
 	}
 	
 	
-	@PostMapping("/truck/edit/{truckId}")
-	public String postEditTruck(@PathVariable String truckId,
+	@PostMapping("/truck/edit/{id}")
+	public String postEditTruck(@PathVariable String id,
 			@ModelAttribute Truck truck,
 			BindingResult result, 
 			RedirectAttributes attributes) {
 		if(!result.hasErrors()) {
-			truckService.amend(Long.parseLong(truckId), truck);
+			truckService.amend(Long.parseLong(id), truck);
 			attributes.addFlashAttribute("message", "Success");
 			attributes.addFlashAttribute("alertClass", "alert-success");
 			log.info("Truck %s saved successfully to database", truck.getRegistration());

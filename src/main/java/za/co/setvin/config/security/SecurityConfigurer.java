@@ -8,24 +8,21 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.util.AntPathMatcher;
 
 import za.co.setvin.config.service.ApplicationUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
+public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
 	private ApplicationUserDetailsService userDetailsService;
-	
-	@Autowired
-	public SecurityConfig(PasswordEncoder passwordEncoder) {
-		this.passwordEncoder = passwordEncoder;
-	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -36,18 +33,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //			.and()
 			.authorizeRequests()
 			.antMatchers("/static/**","/login","/css/**","/js/**","/vendor/**").permitAll()
-//			.antMatchers("/index").hasRole("ADMIN")
 			.anyRequest()
 			.authenticated()
 			.and()
 			.formLogin()
-			.loginPage("/login")
-			.defaultSuccessUrl("/index", true)
+				.loginPage("/login")
+				.defaultSuccessUrl("/index", true)
 			.and()
 			.headers().frameOptions().sameOrigin();
 
 	}
-
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {

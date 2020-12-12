@@ -49,8 +49,8 @@ public class DriverController {
 			RedirectAttributes attributes) {
 		if(!result.hasErrors()) {
 			driverService.add(driver);
-			attributes.addFlashAttribute("message", "Failed");
-			attributes.addFlashAttribute("alertClass", "alert-danger");
+			attributes.addFlashAttribute("message", "Success");
+			attributes.addFlashAttribute("alertClass", "alert-success");
 			return "redirect:/drivers";
 		}
 		attributes.addFlashAttribute("message", "Failed");

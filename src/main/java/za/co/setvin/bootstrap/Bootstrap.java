@@ -216,6 +216,14 @@ public class Bootstrap {
 	
 	private void loadUser() {
 		User calvin = new User("calvin", passwordEncoder.encode("123123"));
+		calvin.setFirstname("Calvin");
+		calvin.setLastname("Chirwa");
+		calvin.setCreated(LocalDateTime.now());
+		calvin.setEmail("cschirwa@gmail.com");
+		calvin.setLocation("Johannesburg");
+		calvin.setPhone("+27786101500");
+		calvin.setPhone2("+27786101501");
+		calvin.setActive(true);
 		userRepository.save(calvin);
 	}
 
