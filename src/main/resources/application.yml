@@ -1,4 +1,4 @@
-server.port: 9000
+server.port: 8080
 spring:
   datasource:
     password: 12341234
