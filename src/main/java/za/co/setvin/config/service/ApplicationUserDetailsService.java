@@ -1,29 +1,24 @@
 package za.co.setvin.config.service;
 
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import za.co.setvin.config.security.ApplicationUserDetails;
-import za.co.setvin.entity.User;
 import za.co.setvin.repository.UserRepository;
 @Service
+@RequiredArgsConstructor
 public class ApplicationUserDetailsService implements UserDetailsService{
 
-	@Autowired
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) {
-		Optional<User> user = userRepository.findByUsername(username);
-		if(user.isPresent()) {
-			return new ApplicationUserDetails(user.get());
+		if(!userRepository.findByUsername(username).isPresent()){
+			throw new UsernameNotFoundException(username + " not found on database");
 		}
-		throw new UsernameNotFoundException(String.format("%s not found on database", username));
+		return new ApplicationUserDetails(userRepository.findByUsername(username).get());
 	}
-
 }

@@ -3,8 +3,10 @@ package za.co.setvin.config.security;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.Getter;
@@ -39,7 +41,9 @@ public class ApplicationUserDetails implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return authorities;
+		return this.authorities.stream()
+				.map(r -> new SimpleGrantedAuthority(r.getAuthority()))
+				.collect(Collectors.toList());
 	}
 
 	@Override

@@ -32,9 +32,14 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
 //				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 //			.and()
 			.authorizeRequests()
-			.antMatchers("/static/**","/login","/css/**","/js/**","/vendor/**","/actuator/**").permitAll()
-			.anyRequest()
-			.authenticated()
+			.antMatchers(
+					"/static/**",
+					"/login",
+					"/css/**",
+					"/js/**",
+					"/vendor/**",
+					"/actuator/**").permitAll()
+			.anyRequest().authenticated()
 			.and()
 			.formLogin()
 				.loginPage("/login")
@@ -42,11 +47,6 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
 			.and()
 			.headers().frameOptions().sameOrigin();
 
-	}
-
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(daoAuthenticationProvider());
 	}
 
 	@Bean

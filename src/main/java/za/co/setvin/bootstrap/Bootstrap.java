@@ -172,15 +172,15 @@ public class Bootstrap {
 		loadService.add(load);
 	}
 	
-	private void loadCurrencies() {
-		List<Currency> currencies = Arrays.asList(
-				new Currency("ZAR", "Rand"),
-				new Currency("BWP", "Pula"),
-				new Currency("GBP", "Pound"),
-				new Currency("USD", "Dollar")
-				);
-		currencies.forEach(ccy -> currencyService.add(ccy));
-	}
+		private void loadCurrencies() {
+			List<Currency> currencies = Arrays.asList(
+					new Currency("ZAR", "Rand"),
+					new Currency("BWP", "Pula"),
+					new Currency("GBP", "Pound"),
+					new Currency("USD", "Dollar")
+					);
+			currencies.forEach(ccy -> currencyService.add(ccy));
+		}
 	
 	private void loadCountries() {
 		List<Country> countries = Arrays.asList(

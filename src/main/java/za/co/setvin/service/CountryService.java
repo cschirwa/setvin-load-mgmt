@@ -30,7 +30,7 @@ public class CountryService {
 			log.info(country + " saved");
 			return countryRepository.save(country);
 		}
-		throw new IllegalArgumentException("Country " + country + " not saved to database");
+		throw new IllegalArgumentException("Country " + country.toString() + " not saved to database");
 	}
 	
 	public void delete(String countryName) {
